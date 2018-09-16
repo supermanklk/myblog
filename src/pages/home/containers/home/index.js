@@ -1,22 +1,15 @@
 import React from 'react'
+import { Layout } from 'antd'
+import './index.scss'
+import Article from '../article/index'
+const { Header, Footer, Sider, Content } = Layout
 class Home extends React.Component {
     render() {
-        return (
-            <div>
-                Home   Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home 
-                Home   Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home 
-                Home   Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home 
-                Home   Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home 
-                Home   Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home 
-                Home   Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home 
-                Home   Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home 
-                Home   Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home 
-                Home   Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home 
-                Home   Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home 
-                Home   Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home 
-                Home   Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home 
-                Home   Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home 
-                Home   Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home  Home 
+        return (   
+            <div className="home"> 
+                <div className="center">
+                    <Article/>
+                </div>
             </div>
         )
     }

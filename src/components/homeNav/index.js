@@ -1,6 +1,6 @@
 import React from 'react';
 import Nav from './nav/index';
-
+import './index.scss'
 
 
 class HomeNav extends React.Component {
@@ -15,6 +15,6 @@ class HomeNav extends React.Component {
             </div> 
         </div>
     )
-  }
-}
+  }  
+} 
 export default HomeNav;

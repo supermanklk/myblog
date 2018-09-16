@@ -14,11 +14,9 @@ const history = syncHistoryWithStore(hashHistory, store);
 class App extends React.Component {
     render(){ 
         return (
-            <div>
                 <Provider store={store}> 
                     <Router history={history} routes={routes} /> 
                 </Provider>
-            </div>
         )
 
     }   
