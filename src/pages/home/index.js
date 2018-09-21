@@ -4,12 +4,12 @@ import createStoreWithMdware from './store/index';
 import {Router, hashHistory} from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import routes from './routes';
-import reducers from './reducers/index'; 
+import reducers from './reducers/index';  
 
 import './index.scss'
   
 
-const store = createStoreWithMdware(reducers); 
+const store = createStoreWithMdware(reducers);  
 const history = syncHistoryWithStore(hashHistory, store);
 class App extends React.Component {
     render(){ 

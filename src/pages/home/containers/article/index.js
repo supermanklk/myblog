@@ -1,9 +1,26 @@
 import React from 'react'
+import './index.scss'
+import {connect} from 'react-redux'
+import * as actions from './action' 
+// 这个有待学习
+// import Dimensions from 'react-dimensions'
 import img1 from '../../../../image/Snipaste_2018-09-16_15-04-31.png'
+import { bindActionCreators } from 'redux';
 class Article extends React.Component {
+    
+    /**
+     * Author : Bin
+     * date : 2019/9/21
+     * Idea : 测试redux配合react是否成功
+     */
+    componentDidMount() {
+        console.log('测试数据-是否接受到redux的store的数据')
+        console.log(this.props) 
+    }
+
     render() {
         return ( 
-            <div>
+            <div className="article">
                 <h2>大地艺术节：把顶级艺术带到日本乡村</h2>
                 <img src={img1} alt=""/>
                 <h4>王英菡：日本“大地艺术节”将艺术引入衰落的乡村，历经18年，让越后妻有地区焕发生机。他们是怎么做到的？</h4>
@@ -55,6 +72,23 @@ class Article extends React.Component {
             </div>
         )
     }
+} 
+
+// export default Dimensions({
+//     getHeight: function() {
+//         return window.innerHeight - 1000;
+//     },
+//     getWidth: function() {
+//         return window.innerWidth - 5000;
+//     }
+// })(Article) 
+
+const mapStateToProps = (state) => ({
+    state : state.articleReducer
+})
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators(actions,dispatch)
 }
 
-export default Article
+export default  connect(mapStateToProps,mapDispatchToProps)(Article)
+
