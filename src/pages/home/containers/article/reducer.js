@@ -1,25 +1,45 @@
-// import {GET_JUDGE, SHOW_HIDE, CHANGE} from './action';
-
+ import {OPEN_VISIBLE, CHANGE_NAME, CLOSE_VISIBLE} from './action';
+//  import { Alert, message } from 'antd'
 const initState = {
-    judge: [],             // 评分记录
-    nick: '',              // 搜寻的用户昵称
-    app: '选择服务',       // 产品
-    vipflag: '选择版本',   // 选择版本信息
-    score: '选择分数',     // 评分
-    sTime: '',            // 开始时间
-    eTime: '',            // 结束时间
-    record_id: '',        // 当前备注的 id
-    record_mark: '',      // 当前备注的内容
-    pages: '',            // 总页数
-    current: 1,           // 当前页
-    visible: false,       // 弹出框的显示与隐藏
+   name : '',
+   visible : false, //输入
 }
 
-export default (state = initState, action) => {
-    switch (action.type) {
-        case '1':
-            return Object.assign({}, state, action.judge);
+export default (state = initState, action) => { 
+    switch (action.type) { 
+        case OPEN_VISIBLE: 
+            return Object.assign({}, state, {visible : true});
+        case CHANGE_NAME:
+            console.log(77)
+            console.log(action)
+            return Object.assign({}, state, {visible : true, name : action.name}); 
+        case CLOSE_VISIBLE:
+        return Object.assign({}, state, handleModal(state,action.kind));
         default:
             return state; 
     }
+}
+ 
+// const error = () => {
+//     message.error('This is a message of error');
+//   };
+
+// type : 1 时候直接关闭
+// type ： 2 时候判断用户是否输入
+function handleModal(state,kind) {
+    console.log(8888888);
+    console.log('555555:',state)
+    console.log(76777);
+    if(kind === 2) { 
+        if(state.name !== '') {
+            console.log(111111111)
+            state.visible = false   
+        } else {  
+            console.log(222222)
+            // error()
+        }
+    } else {
+        //
+    }
+    return state;
 }

@@ -1,5 +1,7 @@
 const TYPE = 'TYPE'
-
+export const OPEN_VISIBLE = 'OPEN_VISIBLE'
+export const CLOSE_VISIBLE = 'CLOSE_VISIBLE'
+export const CHANGE_NAME = 'CHANGE_NAME'
 /**
  * Author : Bin
  * date : 2018/9/21
@@ -17,4 +19,41 @@ export function demo() {
             payload : data  
         })
     }
+}
+
+// 开启弹窗
+export function openVisible() { 
+    return (dispatch) => {
+        dispatch({
+            type : OPEN_VISIBLE
+        })
+    }
+}
+// 关闭弹窗
+export function closeVisible() { 
+    return (dispatch) => {
+        dispatch({  
+            type : CLOSE_VISIBLE,
+            kind : 2
+        })
+    }
+} 
+
+export function onChangeUserName(e) { 
+    console.log(e.target.value)
+    return (dispatch) => {
+        dispatch({
+            type : CHANGE_NAME,
+            name : e.target.value
+        })
+    }
+}
+
+// 关闭弹窗
+export function handleCancel() {
+    console.log(11);
+}
+
+export function  handleOk() {
+    console.log(22);    
 }
