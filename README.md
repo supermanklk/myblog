@@ -1,4 +1,4 @@
-## React全家桶 与 create-react-app (本项目面对用户的使用量达到百万级以上，因此对于技术的选型也是比较看重的，更是一个学习练手的好途径)
+## React全家桶 与 create-react-app (本项目很适合学习练手哦~快来fork吧)
 具体技术有：   "antd"  "react-dom" "react-redux" "react-router" "react-router-redux" "redux" "redux-thunk"
 
 基本操作：
