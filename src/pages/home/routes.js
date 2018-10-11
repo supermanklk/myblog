@@ -1,5 +1,6 @@
-import {Home} from './containers/index'
-import HomeNav from '../../components/homeNav/index'
+import {Home} from './containers/index';
+import Learn from './containers/learn/index';
+import HomeNav from '../../components/homeNav/index';
 const createRoutes = {  
     path : '/',
     component : HomeNav, //这个是导航组件 
@@ -8,7 +9,35 @@ const createRoutes = {
         {
             path : 'home', 
             component : Home  
+        }, 
+        // {
+        //     path : 'news',
+        //     component : News 
+        // },
+        {
+            path : 'learn',
+            component : Learn 
         },
+        // {
+        //     path : 'it',
+        //     component : It
+        // },
+        // {
+        //     path : 'imgs',
+        //     component : Imgs
+        // },
+        // {
+        //     path : 'movies',
+        //     component : Movies
+        // },
+        // {
+        //     path : 'music',
+        //     component : Music
+        // },
+        // {
+        //     path : 'mood',
+        //     component : Mood
+        // },
     ] 
 }
 

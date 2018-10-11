@@ -10,10 +10,16 @@ class Nav extends React.Component {
             <div> 
                 <Menu 
                     mode = "horizontal"
-                    theme = "dark"
+                    theme = "dark" 
                 >
-                    <Menu.Item>菜单项1</Menu.Item> 
-                    <Menu.Item>菜单项</Menu.Item>
+                    <Menu.Item>主页</Menu.Item>  
+                    <Menu.Item><a href="#/home">新闻</a></Menu.Item> 
+                    <Menu.Item> <a href="#/learn">关于学习</a> </Menu.Item>
+                    <Menu.Item>学习编程</Menu.Item>
+                    <Menu.Item>图片</Menu.Item>
+                    <Menu.Item>电影</Menu.Item> 
+                    <Menu.Item>音乐</Menu.Item> 
+                    <Menu.Item>心情</Menu.Item> 
                     <SubMenu key="sub2" title={<span><Icon type="setting" /><span>Navigation Four</span></span>}>
                         <Menu.Item key="7">Option 7</Menu.Item>
                         <Menu.Item key="8">Option 8</Menu.Item>

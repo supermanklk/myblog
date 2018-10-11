@@ -32,7 +32,7 @@ class Article extends React.Component {
         return (  
             <div className="article"> 
                 <Modal 
-                    title="Basic Modal" 
+                    title="英雄名" 
                     visible={this.props.state.visible} 
                     // onOk={this.props.openVisible}
                     onCancel={this.props.closeVisible}

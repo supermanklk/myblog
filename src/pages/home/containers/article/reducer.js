@@ -1,5 +1,5 @@
  import {OPEN_VISIBLE, CHANGE_NAME, CLOSE_VISIBLE} from './action';
-//  import { Alert, message } from 'antd'
+ import { Alert, message } from 'antd'
 const initState = {
    name : '',
    visible : false, //输入
@@ -20,23 +20,19 @@ export default (state = initState, action) => {
     }
 }
  
-// const error = () => {
-//     message.error('This is a message of error');
-//   };
+const error = () => {
+    message.error('英雄，请留下你的大名哦~');
+  };
 
 // type : 1 时候直接关闭
 // type ： 2 时候判断用户是否输入
 function handleModal(state,kind) {
-    console.log(8888888);
-    console.log('555555:',state)
     console.log(76777);
     if(kind === 2) { 
         if(state.name !== '') {
-            console.log(111111111)
             state.visible = false   
         } else {  
-            console.log(222222)
-            // error()
+            error()
         }
     } else {
         //
