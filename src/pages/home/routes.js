@@ -1,5 +1,11 @@
 import {Home} from './containers/index';
 import Learn from './containers/learn/index';
+import News from './containers/news/index';
+import It from './containers/it/index';
+import Imgs from './containers/imgs/index';
+import Movies from './containers/movies/index';
+import Music from './containers/music/index';
+import Mood from './containers/mood/index';
 import HomeNav from '../../components/homeNav/index';
 const createRoutes = {  
     path : '/',
@@ -10,34 +16,34 @@ const createRoutes = {
             path : 'home', 
             component : Home  
         }, 
-        // {
-        //     path : 'news',
-        //     component : News 
-        // },
+        {
+            path : 'news',
+            component : News 
+        },
         {
             path : 'learn',
-            component : Learn 
+            component : Learn  
         },
-        // {
-        //     path : 'it',
-        //     component : It
-        // },
-        // {
-        //     path : 'imgs',
-        //     component : Imgs
-        // },
-        // {
-        //     path : 'movies',
-        //     component : Movies
-        // },
-        // {
-        //     path : 'music',
-        //     component : Music
-        // },
-        // {
-        //     path : 'mood',
-        //     component : Mood
-        // },
+        {
+            path : 'it',
+            component : It
+        },
+        {
+            path : 'imgs',
+            component : Imgs
+        },
+        {
+            path : 'movies',
+            component : Movies
+        },
+        {
+            path : 'music',
+            component : Music
+        },
+        {
+            path : 'mood',
+            component : Mood
+        },
     ] 
 }
 

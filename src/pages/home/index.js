@@ -5,9 +5,9 @@ import {Router, hashHistory} from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import routes from './routes';
 import reducers from './reducers/index';  
-
-import './index.scss'
-  
+import './index.scss' 
+// 在入口的地方引入qn的全局样式
+import "qnui/build/qnui.min.css"; 
 
 const store = createStoreWithMdware(reducers);  
 const history = syncHistoryWithStore(hashHistory, store);

@@ -2,12 +2,14 @@ import React from 'react';
 // import './index.scss';
 // import {connect} from 'react-redux';
 // import {bindActionCreators} from 'redux';
-class Learn extends React.Component {
+import {Button} from 'qnui';
+class Mood extends React.Component {
   
 	render() {
 		return (
 			<div>
-            这是学习页
+			<Button>千牛UI的按钮</Button>
+            这是心情页
 			</div>
 		)
 	}
@@ -22,4 +24,4 @@ class Learn extends React.Component {
 
 // export default connect(mapStateToProps, mapDispatchToProps)(Learn);
 
-export default Learn;
+export default Mood;

@@ -2,12 +2,12 @@ import React from 'react';
 // import './index.scss';
 // import {connect} from 'react-redux';
 // import {bindActionCreators} from 'redux';
-class Learn extends React.Component {
+class It extends React.Component {
   
 	render() {
 		return (
 			<div>
-            这是学习页
+            这是学习IT编程页
 			</div>
 		)
 	}
@@ -22,4 +22,4 @@ class Learn extends React.Component {
 
 // export default connect(mapStateToProps, mapDispatchToProps)(Learn);
 
-export default Learn;
+export default It;
