@@ -13,7 +13,7 @@ class Nav extends React.Component {
                     theme = "dark"  
                 >
                     <Menu.Item>主页</Menu.Item>   
-                    <Menu.Item><a href="#/home">新闻</a></Menu.Item>  
+                    <Menu.Item><span><Icon type="mail"/><a href="#/home">新闻</a></span></Menu.Item>  
                     <Menu.Item> <a href="#/learn">关于学习</a> </Menu.Item>
                     <Menu.Item><a href="#/it">学习编程</a></Menu.Item>   
                     <Menu.Item><a href="#/imgs">图片</a></Menu.Item> 
