@@ -36,6 +36,7 @@ class Article extends React.Component {
                     visible={this.props.state.visible} 
                     // onOk={this.props.openVisible}
                     onCancel={this.props.closeVisible}
+                    onOk = {this.props.closeVisible}
                     > 
                 <Input
                     placeholder="Enter your username"
