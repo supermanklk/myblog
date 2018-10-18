@@ -12,5 +12,8 @@ cd myblog
 npm install(这个速度慢的情况下请自行解决)
 npm start
 ```
+
+大概样子
+![界面图](https://upload-images.jianshu.io/upload_images/9132651-23cd7c97dfa92cb2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
  
 
