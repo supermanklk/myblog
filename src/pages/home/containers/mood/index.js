@@ -46,29 +46,49 @@ class Mood extends React.Component {
 				{
 					"name": "HTML",
 					"children": [
-						{"name": "FlareVis", "value": 4116}
+							{"name": "学习HTML的基础知识","value": "那个彬"},
+							{"name": "HTML语法","value": "那个彬"},
+							{"name": "将页面划分为多个部分并正确构建DOM","value": "那个彬"}
 					]
 				},
 				{
 					"name": "CSS",
 					"children": [
-						{"name": "11", "value": 2105},
-						{"name": "22", "value": 1316},
-						{"name": "33", "value": 3151},
-						{"name": "44", "value": 3770},
-						{"name": "55", "value": 2435},
-						{"name": "66", "value": 4839},
-						{"name": "77", "value": 1756},
-						{"name": "88", "value": 4268},
-						{"name": "99", "value": 1821},
-						{"name": "00", "value": 5833}
+						{"name": "学习CSS基础知识", "value": 2105},
+						{"name": "Grid布局和Flex布局", "11": 1316},
+						{"name": "媒体查询", "value": 3151},
 				   ]
 				},
 				{
 					"name": "JS",
-					"children": [
-						{"name": "DirtySprite", "value": 8833}
+					"children": [ 
+						{"name": "语法和基础的操作", "value": 8833},
+						{"name": "DOM操作", "value": 8833},
+						{"name": "变量提升,事件冒泡,原型", "value": 8833},
+						{"name": "AJXA(XHR)", "value": 8833},
+						{"name": "ES6+", "value": 8833}, 
+						{"name": "Jquery选学", "value": 8833},
 				   ]
+				},
+				{
+					"name": "常用开发技能",
+					"children": [
+						{"name": "GIT,SVN(很少人用了))", "value": 8833},
+						{"name": "HTTP/HTTPS", "value": 8833},
+						{"name": "学会解决方案", "value": 8833},
+						{"name": "数据结构与算法", "value": 8833},
+						{"name": "设计模式", "value": 8833},
+				   ]
+				},
+				{
+					"name" : "React"
+				},
+				{
+					"name" : "构建工具",
+					"children" : [
+						{ "name" : "包管理器"},
+						{ "name" : "任务运行器"},
+					]
 				}
 			]
 		};
@@ -81,10 +101,10 @@ class Mood extends React.Component {
 				triggerOn: 'mousemove'
 			},
 			legend: {
-				top: '2%',
-				left: '3%',
+				top: '10%',
+				left: '2%',
 				orient: 'vertical',
-				data: [
+				data: [ 
 				{
 					name: 'tree2',
 					icon: 'rectangle'
@@ -98,7 +118,7 @@ class Mood extends React.Component {
 					data: [data2],
 		
 					top: '20%',
-					left: '60%',
+					left: '20%',
 					bottom: '22%',
 					right: '18%',
 		
@@ -141,7 +161,7 @@ class Mood extends React.Component {
 			<div>
 				<Button>千牛UI的按钮</Button>
 				这是心情页
-				<div style = {{ width : 500, height : 300}} id = "mainEcharts"></div>
+				<div style = {{ width : 800, height : 500}} id = "mainEcharts"></div>
 				{/* 学习echarts,渲染一个例子 */}
 			</div>
 		) 
