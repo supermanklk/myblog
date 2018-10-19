@@ -5,7 +5,9 @@ import * as actions from './action'
 // 这个有待学习
 // import Dimensions from 'react-dimensions'
 import img1 from '../../../../image/Snipaste_2018-09-16_15-04-31.png'
+import { Modal, Button, Input, Icon } from 'antd'
 import { bindActionCreators } from 'redux';
+const confirm = Modal.confirm;
 class Article extends React.Component {
     
     /**
@@ -16,12 +18,35 @@ class Article extends React.Component {
     componentDidMount() {
         console.log('测试数据-是否接受到redux的store的数据')
         console.log(this.props) 
+        if(this.props.state.name === '') {
+            // 发送action开启visible 
+            this.props.openVisible(); 
+        }
     }
 
+
+    
+ 
     render() {
-        return ( 
-            <div className="article">
-                <h2>大地艺术节：把顶级艺术带到日本乡村</h2>
+        const suffix = this.props.state.name ? <Icon type="close-circle" onClick={this.emitEmpty} /> : null;
+        return (  
+            <div className="article"> 
+                <Modal 
+                    title="英雄名" 
+                    visible={this.props.state.visible} 
+                    // onOk={this.props.openVisible}
+                    onCancel={this.props.closeVisible}
+                    onOk = {this.props.closeVisible}
+                    > 
+                <Input
+                    placeholder="Enter your username"
+                    prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                    suffix={suffix} 
+                    value={this.props.state.name}
+                    onChange={this.props.onChangeUserName} 
+                />
+                </Modal>
+                <h2>大地艺术节：把顶级艺术带到日本乡村</h2> <h1>用户：{this.props.state.name}</h1>  
                 <img src={img1} alt=""/>
                 <h4>王英菡：日本“大地艺术节”将艺术引入衰落的乡村，历经18年，让越后妻有地区焕发生机。他们是怎么做到的？</h4>
                 <p>更新于2018年8月24日 06:01 作者： 王英菡 为FT中文网撰稿</p>

@@ -11,7 +11,7 @@ class HomeNav extends React.Component {
             <Nav />
             <div id="content" className="content" >
                 {/* 页面内容区域 */}
-                {this.props.children}
+                {this.props.children} 
             </div> 
         </div>
     )
