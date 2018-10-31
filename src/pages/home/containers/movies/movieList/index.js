@@ -14,11 +14,12 @@ class MovieList extends React.Component {
     render() {
 		return ( 
 			<div className="">
-                <MovieItem />
-                <MovieItem />
-                <MovieItem /> 
-                <MovieItem /> 
-                <MovieItem /> 
+        <MovieItem />
+        <MovieItem /> 
+        <MovieItem /> 
+        <MovieItem />
+        <MovieItem />
+        <MovieItem />
 			</div> 
 		)
 	}
