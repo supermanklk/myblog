@@ -14,12 +14,12 @@ class Nav extends React.Component {
                 >
                     <Menu.Item>主页</Menu.Item>
                     <Menu.Item><a href="#/home">新闻</a></Menu.Item>  
-                    <Menu.Item> <a href="#/learn">关于学习</a> </Menu.Item> 
+                    <Menu.Item> <a href="#/learn">求职/招聘</a> </Menu.Item> 
                     <Menu.Item><a href="#/it">学习编程</a></Menu.Item>   
                     <Menu.Item><a href="#/imgs">图片</a></Menu.Item> 
                     <Menu.Item><a href="#/movies">电影</a></Menu.Item> 
                     <Menu.Item><a href="#/music">音乐</a></Menu.Item> 
-                    <Menu.Item><a href="#/mood">求职/招聘</a></Menu.Item> 
+                    <Menu.Item><a href="#/mood">心情</a></Menu.Item> 
                     <SubMenu key="sub2" title={<span><Icon type="setting" /><span>待定四项</span></span>}>
                         <Menu.Item key="7">你是猪大</Menu.Item>
                         <Menu.Item key="8">你是猪二</Menu.Item>
