@@ -15,7 +15,7 @@ import{ Icon, Button } from 'antd';
 class LearnItem extends React.Component {
     render() {
 		return ( 
-			<div className="movieitem">
+			<div className="learnItem">
                 <img src="http://supermanbin.oss-cn-beijing.aliyuncs.com/demo_biye_learn.png" alt=""/>  
                 <p>Tornado从入门到进阶 打造支持高并发的技术论坛</p>
                 <p>实战 中级 85</p>
