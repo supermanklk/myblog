@@ -26,7 +26,7 @@ class LearnHome extends React.Component {
  
 	render() {
 		return (
-            <div>
+            <div className = 'learnhome'>
                 {/* 轮播图 */}
                 <div className="App">
                     <div className="swiper-container">
@@ -47,11 +47,21 @@ class LearnHome extends React.Component {
                     </div>
                 </div>
                 {/* 视频列表 */}
+                <h3>前／沿／技／术</h3>
                 <div className = 'mvItems'>
                     <LearnList/>
                     <LearnList/>
                     <LearnList/>
                 </div>
+                <h3>技／能／提／升</h3>
+                <div className = 'mvItems'>
+                    <LearnList/>
+                    <LearnList/>
+                    <LearnList/>
+                </div>
+                <h3>精／彩／手／记／及／猿／问</h3>
+
+
             </div>
 		) 
 	} 
