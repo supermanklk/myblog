@@ -44,35 +44,36 @@ class Music extends React.Component {
 					width={this.props.containerWidth} //table宽度
 					height={this.props.containerHeight} //table的高度s
 					headerHeight={50} //header的高度 
-				>
+					>
 				<Column 
 					header = {<Cell>歌曲</Cell>}
-					width = {100}
+					width = {200}
 					cell = {({rowIndex,...props}) => (
 					<Cell {...props}>
 						{data[rowIndex]['a']}
 					</Cell>
 					)}
-				>
-				</Column>
+					flexGrow = {1}
+				/>
 				<Column 
-					width = {100}
+					width = {200}
 					header = {<Cell>作者</Cell>}
 					cell = {({rowIndex,...props}) => (
 					<Cell {...props}>
 						{data[rowIndex]['b']}
 					</Cell>
 					)}
-				>
-				</Column>
+					flexGrow = {1}
+				/>
 				<Column 
-					width = {300}
+					width = {200}
 					header = {<Cell>专辑</Cell>}
 					cell = {({rowIndex,...props}) => (
 					<Cell {...props}>
 						{data[rowIndex]['c']}
 					</Cell>
 					)}
+					flexGrow = {1}
 				>
 				</Column>
 				</Table>
