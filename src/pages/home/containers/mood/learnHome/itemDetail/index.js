@@ -32,7 +32,10 @@ class itemDetail extends React.Component {
                         <h3 className = 'body'>基于LNMP的测试工具环境部署</h3>
                         <div className = 'bottom'>
                             <div className = 'bottom_left'>
-                                <img className = 'img_author' src="http://supermanbin.oss-cn-beijing.aliyuncs.com/superman.png" alt=""/>
+                                <div className = 'img_style'>
+                                    <img  className = 'img img_style_end img_author' src="http://supermanbin.oss-cn-beijing.aliyuncs.com/superman.png" alt=""/>
+                                </div>
+                                {/* <img className = 'img_author' src="http://supermanbin.oss-cn-beijing.aliyuncs.com/superman.png" alt=""/> */}
                                 <p className = 'bottom_left_right'>
                                     <span>超人不会飞</span>
                                     <span className = 'what'>前端攻城狮</span>
@@ -104,21 +107,27 @@ class itemDetail extends React.Component {
                             <div className = 'right_recommend'>
                                 <h5 className = 'rewrite_h5'>推荐课程</h5>
                                 <div className = 'right_recommend_item'>
-                                        <img className = 'course_img'  src="http://supermanbin.oss-cn-beijing.aliyuncs.com/%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1/moou.jpg" alt=""/>
+                                    <div className = 'img_style'>
+                                        <img  className = 'img img_style_end' src="http://supermanbin.oss-cn-beijing.aliyuncs.com/%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1/moou.jpg" alt=""/>
+                                    </div>
                                     <div className = 'p_style'>
                                         <span className = 'course_name'>安卓自动化测试入门</span>
                                         <span className = 'course_info'>$148.00 初级 11110</span>
                                     </div>
                                 </div>
                                 <div className = 'right_recommend_item'>
-                                    <img className = 'course_img' src="https://supermanbin.oss-cn-beijing.aliyuncs.com/%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1/course_commend_3.jpg" alt=""/>
+                                    <div className = 'img_style'>
+                                        <img  className = 'img img_style_end' src="https://supermanbin.oss-cn-beijing.aliyuncs.com/%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1/course_commend_3.jpg" alt=""/>
+                                    </div>
                                     <div className = 'p_style'>
-                                        <span className = 'course_name'>Android自动化测试实战 Java篇 主流工具 框架 脚本</span>
+                                        <span className = 'course_name'>Android自动化测试实战 Java篇</span>
                                         <span className = 'course_info'>$179.00 初级 11110</span>
                                     </div>
                                 </div>
                                 <div className = 'right_recommend_item'>
-                                    <img className = 'course_img' src="http://supermanbin.oss-cn-beijing.aliyuncs.com/%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1/course_commend_2.jpg" alt=""/>
+                                    <div className = 'img_style'>
+                                        <img  className = 'img img_style_end' src="http://supermanbin.oss-cn-beijing.aliyuncs.com/%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1/course_commend_2.jpg" alt=""/>
+                                    </div>
                                     <div className = 'p_style'>
                                         <span className = 'course_name'>Python移动自动化测试面试</span>
                                         <span className = 'course_info'>$299.00 初级 11110</span>
