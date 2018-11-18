@@ -11,7 +11,9 @@ import './index.scss';
 class itemDetail extends React.Component {
     
     componentDidMount() {
-       
+        // 根据courseId的参数来进行渲染这个页面
+    //    console.log(this.props.query.courseId);
+       console.log(this.props.location.query.courseId);
     }
 
  
@@ -102,7 +104,7 @@ class itemDetail extends React.Component {
                             <div className = 'right_recommend'>
                                 <h5 className = 'rewrite_h5'>推荐课程</h5>
                                 <div className = 'right_recommend_item'>
-                                    <img className = 'course_img' src="http://supermanbin.oss-cn-beijing.aliyuncs.com/%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1/moou.jpg" alt=""/>
+                                        <img className = 'course_img'  src="http://supermanbin.oss-cn-beijing.aliyuncs.com/%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1/moou.jpg" alt=""/>
                                     <div className = 'p_style'>
                                         <span className = 'course_name'>安卓自动化测试入门</span>
                                         <span className = 'course_info'>$148.00 初级 11110</span>
