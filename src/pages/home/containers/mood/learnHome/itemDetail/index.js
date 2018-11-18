@@ -32,10 +32,7 @@ class itemDetail extends React.Component {
                         <h3 className = 'body'>基于LNMP的测试工具环境部署</h3>
                         <div className = 'bottom'>
                             <div className = 'bottom_left'>
-                                <div className = 'img_style'>
-                                    <img  className = 'img img_style_end img_author' src="http://supermanbin.oss-cn-beijing.aliyuncs.com/superman.png" alt=""/>
-                                </div>
-                                {/* <img className = 'img_author' src="http://supermanbin.oss-cn-beijing.aliyuncs.com/superman.png" alt=""/> */}
+                                <img className = 'img_author' src="http://supermanbin.oss-cn-beijing.aliyuncs.com/superman.png" alt=""/>
                                 <p className = 'bottom_left_right'>
                                     <span>超人不会飞</span>
                                     <span className = 'what'>前端攻城狮</span>

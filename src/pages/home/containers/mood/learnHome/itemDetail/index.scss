@@ -136,6 +136,14 @@
 //     height: 70px!important;
 // }
 
+.img_style_author {
+    width: 48px;
+    height: 48px;
+    position: relative;
+    transform: opacity 1s ease-in;
+    overflow: hidden;
+}
+
 .img_style {
     width: 80px;
     height: 60px;
