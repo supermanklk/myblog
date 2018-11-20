@@ -1,7 +1,8 @@
 import React from 'react';
 import './index.scss';
 import { Modal, Button, Tabs, Input, Icon, Checkbox } from 'antd';
-import {isPhone} from '../../public/util/index';
+// import {isPhone} from '../../public/util/index';
+import {isPhone} from 'util/index';
 // import Dimensions from 'react-dimensions';
 const TabPane = Tabs.TabPane;
 
