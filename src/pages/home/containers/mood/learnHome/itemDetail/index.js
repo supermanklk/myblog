@@ -104,6 +104,7 @@ class itemDetail extends React.Component {
                             <div className = 'right_recommend'>
                                 <h5 className = 'rewrite_h5'>推荐课程</h5>
                                 <div className = 'right_recommend_item'>
+                                    {/* img_style 这里的类是为了图片的动态效果服务的 */}
                                     <div className = 'img_style'>
                                         <img  className = 'img img_style_end' src="http://supermanbin.oss-cn-beijing.aliyuncs.com/%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1/moou.jpg" alt=""/>
                                     </div>

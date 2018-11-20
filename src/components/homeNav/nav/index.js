@@ -1,11 +1,17 @@
 import React from 'react'
 import { Menu, Icon, Layout, Button } from 'antd'
+import showRegisater from '../../register/api';
 const { Header, Footer, Sider, Content } = Layout
 const SubMenu = Menu.SubMenu
 
-const MenuItemGroup = Menu.ItemGroup
+// const MenuItemGroup = Menu.ItemGroup
 
 class Nav extends React.Component {
+    
+    register = () => {
+        showRegisater();
+    }
+
     render() {
         return (
             <div> 
@@ -27,6 +33,8 @@ class Nav extends React.Component {
                         <Menu.Item key="9">你是猪三</Menu.Item>
                         <Menu.Item key="10">你是猪四</Menu.Item> 
                     </SubMenu>
+                    <Menu.Item><Button onClick = {this.register}>注册</Button></Menu.Item> 
+                    <Menu.Item><Button onClick = {this.register}>登录</Button></Menu.Item> 
                 </Menu>
           </div>
         )
