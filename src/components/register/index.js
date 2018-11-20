@@ -17,10 +17,16 @@ class UserRegister extends React.Component {
         super(...args);
         this.state = {
             visible: true,
-            id : '',
-            id_placeholder : '',
-            password : '',
-            password_placeholder : ''
+            id : '',        //账号  必选
+            id_placeholder : '',    //账号错误的时候,显示的报错内容
+            password : '',      //密码  必选
+            password_placeholder : '',      //密码错误的时候,显示的报错内容 
+            auto7 : false,     //默认7天自动登录为false 可选
+            agreeProtocol : false,        //是否同意注册协议
+            registerPhone : '',     //注册手机号
+            registerPhone_placeholder : '', //注册手机存在或者错误时候,显示报错内容
+            verificationCode : '',       //验证码
+            verificationCode_placeholder : '',      //验证码错误的时候显示报错内容
         }
     }
 
@@ -48,6 +54,13 @@ class UserRegister extends React.Component {
         console.log(key);
         if(key == 1) {
             // 恢复2的初始化
+            this.setState({
+                agreeProtocol : false,        //是否同意注册协议
+                registerPhone : '',     //注册手机号
+                registerPhone_placeholder : '', //注册手机存在或者错误时候,显示报错内容
+                verificationCode : '',       //验证码
+                verificationCode_placeholder : '',      //验证码错误的时候显示报错内容
+            })
         } else if(key == 2) {
             // 恢复1的初始化
             this.setState({
@@ -55,8 +68,8 @@ class UserRegister extends React.Component {
                 id_placeholder : '',    //账号错误的时候,显示的报错内容
                 password : '',      //密码  必选
                 password_placeholder : '',      //密码错误的时候,显示的报错内容 
-                auto7 : 'false',     //默认7天自动登录为false 可选
-                agreeProtocol : 'false'
+                auto7 : false,     //默认7天自动登录为false 可选
+               
             })
         }
     }
@@ -94,6 +107,7 @@ class UserRegister extends React.Component {
     /**
      * @description     实时修改账号与密码
      * @memberof UserRegister
+     * @param type 1,2,3,4 分别 登录账号 登录密码 注册账号 验证码
      */
     change = (e,type) => {
         if(type == 1) {
@@ -103,6 +117,14 @@ class UserRegister extends React.Component {
         }else if(type == 2){
             this.setState({
                 password : e.target.value
+            })
+        }else if(type == 3) {
+            this.setState({
+                registerPhone : e.target.value
+            })
+        }else if(type == 4) {
+            this.setState({
+                verificationCode : e.target.value
             })
         }
        
@@ -134,9 +156,19 @@ class UserRegister extends React.Component {
                 break;
             // 注册输入手机号
             case 3 :
+                if(isPhone(value)){
+                    this.setState({registerPhone : value, registerPhone_placeholder : ''});
+                } else {
+                    this.setState({registerPhone : value,registerPhone_placeholder : '请输入正确的账号'});
+                }
                 break;
             // 注册输入验证码
             case 4 :
+                if(value == 77) {
+                    this.setState({verificationCode : value, verificationCode_placeholder : ''});
+                } else {
+                    this.setState({verificationCode : value, verificationCode_placeholder : '验证码错误,请重试'})
+                }
                 break;
             // 登录是否选择七天自动登录
             case 5 :
@@ -171,7 +203,7 @@ class UserRegister extends React.Component {
                             <Input className = 'input_phone'  onChange = {(e) => {this.change(e,2)}} type = 'password' value = {this.state.password} onBlur = {(e) => {this.verification(e,2)}} placeholder = '请输入密码'/>
                             <p className = 'prompt'>{this.state.password_placeholder}</p>
                             <div className = 'login_quest'>
-                                <Checkbox onChange = {(e) => {this.onChangeAgree(e,1)}}>7天内自动登录</Checkbox>
+                                <Checkbox checked = {this.state.auto7} onChange = {(e) => {this.onChangeAgree(e,1)}}>7天内自动登录</Checkbox>
                                 <p>
                                     <span>找回密码&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                     <span>无法登录</span>
@@ -182,10 +214,12 @@ class UserRegister extends React.Component {
 
                         {/* 注册的Tab */}
                         <TabPane tab="注册" key="2">
-                            <Input className = 'input_phone' type="text" placeholder = '请输入注册手机号'/>
-                            <Input className = 'input_check' type="text" placeholder = '请输入验证码'/>
+                            <Input className = 'input_phone' type="text" value = {this.state.registerPhone}  onBlur = {(e) => {this.verification(e,3)}} onChange = {(e) => {this.change(e,3)}} placeholder = '请输入注册手机号'/>
+                            <p className = 'prompt'>{this.state.registerPhone_placeholder}</p>
+                            <Input className = 'input_check' type="text" value = {this.state.verificationCode} onBlur = {(e) => {this.verification(e,4)}} onChange = {(e) => {this.change(e,4)}} placeholder = '请输入验证码'/>
                             <p className = 'verificationCode'><Icon type="redo" /><span>KF98</span></p>
-                            <Checkbox onChange = {(e) => {this.onChangeAgree(e,2)}}>同意</Checkbox>
+                            <p className = 'prompt'>{this.state.verificationCode_placeholder}</p>
+                            <Checkbox checked = {this.state.agreeProtocol} onChange = {(e) => {this.onChangeAgree(e,2)}}>同意</Checkbox>
                             <span>`南工在线学习系统`</span>
                             <h4 className = 'registerBtn'>注册</h4>
                             <p className = 'share'>
