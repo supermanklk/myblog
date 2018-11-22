@@ -14,6 +14,7 @@ npm start
 ```
 
 大概样子
+![示例图](https://supermanbin.oss-cn-beijing.aliyuncs.com/%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1/example_1.png)
 ![界面图](https://upload-images.jianshu.io/upload_images/9132651-23cd7c97dfa92cb2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
  
 

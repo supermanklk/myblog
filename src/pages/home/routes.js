@@ -7,6 +7,7 @@ import Movies from './containers/movies/index';
 import Music from './containers/music/index';
 import Mood from './containers/mood/index';
 import HomeNav from '../../components/homeNav/index';
+import itemDetail from '../../pages/home/containers/mood/learnHome/itemDetail/index';
 const createRoutes = {  
     path : '/',
     component : HomeNav, //这个是导航组件 
@@ -44,6 +45,10 @@ const createRoutes = {
             path : 'mood',
             component : Mood
         },
+        {
+            path : 'itemDetail',
+            component : itemDetail
+        }
     ] 
 }
 
