@@ -19,10 +19,10 @@ class UserRegister extends React.Component {
         super(...args);
         this.state = {
             visible: true,
-            id : '',                        //账号  必选
-            id_placeholder : '',            //账号错误的时候,显示的报错内容
-            password : '',                  //密码  必选
-            password_placeholder : '',      //密码错误的时候,显示的报错内容 
+            id : '',                        //账号1  必选
+            id_placeholder : '',            //账号错误的时候,显示的报错内容2
+            password : '',                  //密码  必选3
+            password_placeholder : '',      //密码错误的时候,显示的报错内容4
             auto7 : false,                  //默认7天自动登录为false 可选
             agreeProtocol : false,          //是否同意注册协议
             registerPhone : '',             //注册手机号
@@ -32,12 +32,22 @@ class UserRegister extends React.Component {
         }
     }
 
+    /**
+     * @description aaaaaaaaaaa
+     * @memberof    bbbbbbbbbbb
+     * @zhangbin    bbbbbbbbbbb
+     * @haha        bbbbbbbbbbb
+     */
     showModal = () => {
         this.setState({
           visible: true,
         });
       }
     
+    /**
+     * @description
+     * @memberof UserRegister
+     */
     handleOk = (e) => {
     console.log(e);
     this.setState({

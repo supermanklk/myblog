@@ -1,6 +1,7 @@
 import React from 'react';
 import './index.scss';
-
+import {Collapse} from 'antd';
+const Panel = Collapse.Panel;
 /**
  * @description 在线学习视频-课程详情
  * @author Bin
@@ -9,6 +10,13 @@ import './index.scss';
  * @extends {React.Component}
  */
 class itemDetail extends React.Component {
+
+    constructor(...props) {
+        super(...props);
+        this.state = {
+            activeA : 1,    // 默认为课程章节
+        }
+    }
     
     componentDidMount() {
         // 根据courseId的参数来进行渲染这个页面
@@ -16,8 +24,100 @@ class itemDetail extends React.Component {
        console.log(this.props.location.query.courseId);
     }
 
+
+    /**
+     * @description     点击课程,问答,笔记,评价触发的函数
+     * @author          Bin
+     * @date            2018-11-29
+     * @param {*}       num : 1,2,3,4 分别代表课程,问答,笔记,评价
+     * @memberof        clickA
+     */
+
+    clickA(num) {
+        this.setState({
+            activeA : num,
+        })
+    }
  
 	render() {
+        const text = `
+        A dog is a type of domesticated animal.
+        Known for its loyalty and faithfulness,
+        it can be found as a welcome guest in many households across the world.
+        `;
+        const customPanelStyle = {
+            background: '#f7f7f7',
+            borderRadius: 4,
+            marginBottom: 24,
+            border: 0,
+            overflow: 'hidden',
+        };
+        /* 课程,问答,笔记,评价是否被显示, 同时只能显示一个 */
+        let displayLeft = null;
+        switch (this.state.activeA) {
+            case 1 : 
+                displayLeft = (
+                    <div className = 'left_div'>
+                        <p className = 'box_style'>简介：LNMP通常是指Linux + Nginx + MySQL + PHP的简称。LNMP与LAMP相比，消耗资源更少，支持的并发连接，更高的效率，反向代理功能效率高、静态文件处理快等。本课程和您一起，手把手分别使用yum和源码安装配置LNMP环境，并部署常见的测试管理工具所需环境。</p>
+                        <div className = 'box_style'>
+                            <h4>第1章 课程介绍</h4>
+                            <p>本章介绍本课程要点，学习的方式，最终的实践效果。</p>
+                            <p>1-1. 课程介绍(01.35)</p>
+                        </div>
+                        <div className = 'box_style'>
+                            <h4>第2章 LNMP初探</h4>
+                            <p>本章介绍L、N、M、P是什么及为什么要使用LNMP。</p>
+                            <p>2-1. 最近喜欢椰汁,椰树牌的,鲜榨30年,不用椰子香精当生榨骗人,您值得拥有.</p>
+                        </div>
+                    </div>
+                );
+                break;
+            case 2 :
+                displayLeft = (
+                    <Collapse bordered={false} defaultActiveKey={['1']}>
+                        <Panel header="超人 2018-8-9 男" key="1" style={customPanelStyle}>
+                        <p>大家记得拿快递哦~~不一一at了空调我新风我都关了，如果晚上冷自己开的话，记得关闭</p>
+                        </Panel>
+                        <Panel header="This is panel header 2" key="2" style={customPanelStyle}>
+                        <p>{text}</p>
+                        </Panel>
+                        <Panel header="This is panel header 3" key="3" style={customPanelStyle}>
+                        <p>{text}</p>
+                        </Panel>
+                        <Panel header="This is panel header 4" key="4" style={customPanelStyle}>
+                        <p>{text}</p>
+                        </Panel>
+                        <Panel header="This is panel header 5" key="5" style={customPanelStyle}>
+                        <p>{text}</p>
+                        </Panel>
+                        <Panel header="This is panel header 6" key="6" style={customPanelStyle}>
+                        <p>{text}</p>
+                        </Panel>
+                        <Panel header="This is panel header 7" key="7" style={customPanelStyle}>
+                        <p>{text}</p>
+                        </Panel>
+                        <Panel header="This is panel header 8" key="8" style={customPanelStyle}>
+                        <p>{text}</p>
+                        </Panel>
+                        <Panel header="This is panel header 9" key="9" style={customPanelStyle}>
+                        <p>{text}</p>
+                        </Panel>
+                        <Panel header="This is panel header 10" key="10" style={customPanelStyle}>
+                        <p>{text}</p>
+                        </Panel>
+                    </Collapse> 
+                );
+                break;
+            case 3 :
+                displayLeft = '3333';
+                break;
+            case 4 :
+                displayLeft = '4444';
+                break;
+            default:
+                return;
+        }
+      
 		return (
             <div className = 'itemDetail'>
                 
@@ -48,10 +148,10 @@ class itemDetail extends React.Component {
                     {/* 1200px */}
                     <div className = 'itemDetail_header_2_inner'>
                         {/* 封装成公共组建 */}
-                        <a>课程章节</a>
-                        <a>问答评价</a>
-                        <a>同学笔记</a>
-                        <a>用户评价</a>
+                        <a onClick = {() => {this.clickA(1)}}>课程章节</a>
+                        <a onClick = {() => {this.clickA(2)}}>问答评价</a>
+                        <a onClick = {() => {this.clickA(3)}}>同学笔记</a>
+                        <a onClick = {() => {this.clickA(4)}}>用户评价</a>
                     </div>
                 </div>
                 
@@ -62,28 +162,15 @@ class itemDetail extends React.Component {
                         {/* left  800px */}
 
                         {/* 左边-课程章节 */}
+                        {/* <div className = 'left'></div> */}
+
+
+                        {/* 同学笔记 */}
+                        {/* 这一块最多显示10条数据 */}
                         <div className = 'left'>
-                            <div className = 'left_div'>
-                                <p className = 'box_style'>简介：LNMP通常是指Linux + Nginx + MySQL + PHP的简称。LNMP与LAMP相比，消耗资源更少，支持的并发连接，更高的效率，反向代理功能效率高、静态文件处理快等。本课程和您一起，手把手分别使用yum和源码安装配置LNMP环境，并部署常见的测试管理工具所需环境。</p>
-                                <div className = 'box_style'>
-                                    <h4>第1章 课程介绍</h4>
-                                    <p>本章介绍本课程要点，学习的方式，最终的实践效果。</p>
-                                    <p>1-1. 课程介绍(01.35)</p>
-                                </div>
-                                <div className = 'box_style'>
-                                    <h4>第2章 LNMP初探</h4>
-                                    <p>本章介绍L、N、M、P是什么及为什么要使用LNMP。</p>
-                                    <p>2-1. 最近喜欢椰汁,椰树牌的,鲜榨30年,不用椰子香精当生榨骗人,您值得拥有.</p>
-                                </div>
-                            </div>
+                            {displayLeft}
                         </div>
 
-                        {/* 左边-同学笔记 */}
-                        {/* <div className = 'left'>
-                            <div className = 'left_div'>
-                                111
-                            </div>
-                        </div> */}
 
                         {/* right 400px */}
                         <div className = 'right'>
