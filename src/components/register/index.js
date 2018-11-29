@@ -6,27 +6,28 @@ import {isPhone} from 'util/index';
 // import Dimensions from 'react-dimensions';
 const TabPane = Tabs.TabPane;
 
+
 /**
  * @description
- * @author Bin
- * @date 2018-11-20
- * @class UserRegister
- * @extends {React.Component}
+ * @author      Bin
+ * @date        2018-11-29
+ * @class       UserRegister
+ * @extends     {React.Component}
  */
 class UserRegister extends React.Component {
     constructor(...args) {
         super(...args);
         this.state = {
             visible: true,
-            id : '',        //账号  必选
-            id_placeholder : '',    //账号错误的时候,显示的报错内容
-            password : '',      //密码  必选
+            id : '',                        //账号  必选
+            id_placeholder : '',            //账号错误的时候,显示的报错内容
+            password : '',                  //密码  必选
             password_placeholder : '',      //密码错误的时候,显示的报错内容 
-            auto7 : false,     //默认7天自动登录为false 可选
-            agreeProtocol : false,        //是否同意注册协议
-            registerPhone : '',     //注册手机号
+            auto7 : false,                  //默认7天自动登录为false 可选
+            agreeProtocol : false,          //是否同意注册协议
+            registerPhone : '',             //注册手机号
             registerPhone_placeholder : '', //注册手机存在或者错误时候,显示报错内容
-            verificationCode : '',       //验证码
+            verificationCode : '',          //验证码
             verificationCode_placeholder : '',      //验证码错误的时候显示报错内容
         }
     }
