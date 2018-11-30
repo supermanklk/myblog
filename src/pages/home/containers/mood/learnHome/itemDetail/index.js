@@ -1,6 +1,7 @@
 import React from 'react';
 import './index.scss';
-import {Collapse} from 'antd';
+import ItemMovieList from './itemMovieList/index'; // 课程章节 >> 具体的视频列表组件
+import {Collapse, List, Avatar} from 'antd';
 const Panel = Collapse.Panel;
 /**
  * @description 在线学习视频-课程详情
@@ -34,12 +35,70 @@ class itemDetail extends React.Component {
      */
 
     clickA(num) {
+        if(num != this.state.activeA) {
+            /* 此刻按钮颜色是num这个 */
+            switch (num){
+                case 1 :
+                    this.a1.style.color = '#EE0D12';
+                    break;
+                case 3 :
+                    this.a3.style.color = '#EE0D12';
+                    break;
+                case 4 :
+                    this.a4.style.color = '#EE0D12';
+                    break;
+                default :
+                    break;
+            } 
+            if(this.state.activeA == 1) this.a1.style.color = '';
+            if(this.state.activeA == 3) this.a3.style.color = '';
+            if(this.state.activeA == 4) this.a4.style.color = '';
+        }
         this.setState({
             activeA : num,
         })
     }
  
 	render() {
+
+        /* 用户评价内容 */
+        const data = [
+            {
+                title: '佩奇一号',
+                description : '怒抢沙发，老师讲的实在是太棒了，本人在深度学习领域，学习研究了快两年了，以前一些自认为很熟悉了解透的东西，通过老师的讲解我才发现以前的自己有多么的无知。不愧是google的人，真的佩服。老师加油出，敢出就敢买。'
+            },
+            {
+                title: '佩奇二号',
+                description : '额…… 偏向实战，一行行敲代码解释代码。适合看了不少书却几乎没有敲过神经网络代码的人购买。'
+            },
+            {
+                title: '你信不信我捶你?',
+                description : '讲的非常好，内容偏向实战，老师代码水平也很高，是我听过的最好的一套深度学习的课程，感觉自己买赚了。很期待老师后续再多出一些深度学习的课程'
+            },
+            {
+                title: '日本北海道',
+                description : '老师确实很厉害，能看出来几乎不用照着什么东西写的，都是现场debug。代码能力很强，学习！。'
+            },
+            {
+                title: '东方明珠哦',
+                description : '老师把很多基础概念讲的非常清晰明白，我感到受益匪浅。以前的课都是上来就讲结果，不晓得为什么会这样，现在感觉思路清晰多了！'
+            },
+            {
+                title: 'hello莫妮卡',
+                description : '老师水平是相当高的！只是发音清楚一点就好了哈哈哈'
+            },
+            {
+                title: '嘿嘿',
+                description : '老师讲的比我上次买的另一个老师的讲得好，很细致。'
+            },
+            {
+                title: '哈哈哈啊了',
+                description : ' 就是有一天 当你再次面对你过往的难堪 你憎恨恼怒的人 心如止水 不再起心动念 坦然面对 一笑了之 即便别人在你面前 复述你过往种种不幸时 你仿佛是在听别人的故事 当你真正放下的时候 心里一丝涟漪都没有了 放下 莫过如此.'
+            },
+            
+        ];
+
+        /* 同学笔记内容 */
         const text = `
         A dog is a type of domesticated animal.
         Known for its loyalty and faithfulness,
@@ -57,22 +116,13 @@ class itemDetail extends React.Component {
         switch (this.state.activeA) {
             case 1 : 
                 displayLeft = (
+                    /* 课程章节 >> 具体的视频列表组件 */
                     <div className = 'left_div'>
-                        <p className = 'box_style'>简介：LNMP通常是指Linux + Nginx + MySQL + PHP的简称。LNMP与LAMP相比，消耗资源更少，支持的并发连接，更高的效率，反向代理功能效率高、静态文件处理快等。本课程和您一起，手把手分别使用yum和源码安装配置LNMP环境，并部署常见的测试管理工具所需环境。</p>
-                        <div className = 'box_style'>
-                            <h4>第1章 课程介绍</h4>
-                            <p>本章介绍本课程要点，学习的方式，最终的实践效果。</p>
-                            <p>1-1. 课程介绍(01.35)</p>
-                        </div>
-                        <div className = 'box_style'>
-                            <h4>第2章 LNMP初探</h4>
-                            <p>本章介绍L、N、M、P是什么及为什么要使用LNMP。</p>
-                            <p>2-1. 最近喜欢椰汁,椰树牌的,鲜榨30年,不用椰子香精当生榨骗人,您值得拥有.</p>
-                        </div>
+                        <ItemMovieList/>
                     </div>
                 );
                 break;
-            case 2 :
+            case 3 :
                 displayLeft = (
                     <Collapse bordered={false} defaultActiveKey={['1']}>
                         <Panel header="超人 2018-8-9 男" key="1" style={customPanelStyle}>
@@ -108,11 +158,25 @@ class itemDetail extends React.Component {
                     </Collapse> 
                 );
                 break;
-            case 3 :
+            case 2 :
                 displayLeft = '3333';
                 break;
             case 4 :
-                displayLeft = '4444';
+                displayLeft = (
+                    <List
+                    itemLayout="horizontal"
+                    dataSource={data}
+                    renderItem={item => (
+                    <List.Item>
+                        <List.Item.Meta
+                        avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
+                        title={<a href="#">{item.title}</a>}
+                        description = {item.description}
+                        />
+                    </List.Item>
+                    )}
+                    />
+                );
                 break;
             default:
                 return;
@@ -142,16 +206,16 @@ class itemDetail extends React.Component {
                         </div>
                     </div>
                 </div>
-                
+
                 {/* header - 2 */}
                 <div className = 'itemDetail_header_2'>
                     {/* 1200px */}
                     <div className = 'itemDetail_header_2_inner'>
                         {/* 封装成公共组建 */}
-                        <a onClick = {() => {this.clickA(1)}}>课程章节</a>
-                        <a onClick = {() => {this.clickA(2)}}>问答评价</a>
-                        <a onClick = {() => {this.clickA(3)}}>同学笔记</a>
-                        <a onClick = {() => {this.clickA(4)}}>用户评价</a>
+                        <span ref = {node => this.a1 = node} onClick = {() => {this.clickA(1)}} style = {{color : '#EE0D12'}}>课程章节</span>
+                        {/* <a onClick = {() => {this.clickA(2)}}>问答评价</a> */}
+                        <span href = "#" ref = {node => this.a3 = node} onClick = {() => {this.clickA(3)}}>同学笔记</span>
+                        <span href = "#" ref = {node => this.a4 = node} onClick = {() => {this.clickA(4)}}>用户评价</span>
                     </div>
                 </div>
                 
