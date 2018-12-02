@@ -6,3 +6,45 @@
     box-shadow: 0 8px 16px 0 rgba(7,17,27,.1);
     border-radius: 12px;
 }
+
+.img_icon{
+    margin-right: 8px;
+    width: 20px;
+    height: 20px;
+}
+
+.btn_start_learn {
+    padding-left: 5px;
+    display: none;
+    border-radius: 15px;
+    text-align: center;
+    background: #F00D10;
+    color: white;
+    padding-right: 5px;
+}
+
+.box_style_list {
+    div {
+        display: flex;
+        align-items: center;
+    }
+    border-radius: 12px;
+    padding: 15px;
+    cursor: pointer;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.box_style_list:hover {
+    background: #FEF3F3;
+    .img_icon {
+        content: url('http://supermanbin.oss-cn-beijing.aliyuncs.com/%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1/icon/start_active.png');
+    }
+    .btn_start_learn {
+        display: inline-block;
+    }
+}
+
+
