@@ -1,3 +1,7 @@
+.onlineMovie_wrap {
+    display: flex;
+    flex-direction: column;
+}
 .onlineMovie {
     text-align: center;
     height: 700px;
@@ -56,4 +60,12 @@
             }
         }
     }
+ 
+}
+.ant-drawer-header {
+    background: #CECECE;
+}
+.ant-drawer-content {
+    background: #222427;
+    color: #A6A7A8;
 }

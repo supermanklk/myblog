@@ -14,7 +14,7 @@ class Nav extends React.Component {
 
     render() {
         return (
-            <div> 
+            <div id = "home_nav"> 
                 <Menu 
                     mode = "horizontal" 
                     theme = "dark"  

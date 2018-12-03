@@ -53,7 +53,19 @@ const createRoutes = {
         },
         {
             path : 'onlineMovie',
-            component : OnlineMovie
+            component : OnlineMovie,
+            onEnter : () => {
+                /* 播放视频的页面的背景色需要是 #181A1B */
+                // console.log(document.querySelector("#content"));
+            },
+            onLeave : ()=> {
+                /* 播放视频页面离开时候需要恢复页面的状态 */
+                let element = document.getElementById("home_nav");
+                if(element) {
+                    element.style.display = 'block';
+                }
+            }
+        
         }
     ] 
 }

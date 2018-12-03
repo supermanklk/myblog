@@ -1,0 +1,165 @@
+.itemDetail {
+    .itemDetail_header {
+        padding-top: 36px;
+        background: black;
+        padding-bottom: 40px;
+        .itemDetail_header_inner {
+            width: 1200px;
+            margin:  0 auto 0;
+            .top {
+                // color: rgba(255,255,255,0);
+                color: gray;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            .body {
+                margin-bottom: 8px;
+                line-height: 48px;
+                font-size: 32px;
+                color: #fff;
+            }
+            .bottom {
+                color: #fff;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                .bottom_left {
+                    .img_author {
+                        margin-right: 12px;
+                        width: 48px;
+                        height: 48px;
+                        border-radius: 100%;
+                    }
+                    display: flex;
+                    .bottom_left_right {
+                        .what {
+                            font-size: 12px;
+                        }
+                        display: flex;
+                        flex-direction: column;
+                    }
+                }
+                .bottom_right {
+                    display: flex;
+                }
+            }
+        }
+
+    }
+
+    .itemDetail_header_2 {
+        height: 68px;
+        line-height: 68px;
+        background: #fff;
+        box-shadow: 0 4px 8px 0 rgba(28,31,33,.1);
+        .itemDetail_header_2_inner {
+            width: 1200px;
+            margin: 0 auto 0;
+            span {
+                font-weight: bold;
+                font-size: 16px;
+                margin-right: 80px;
+                color: #1c1f21;
+                cursor: pointer;;
+            }
+            
+            
+         }
+    }
+
+    .itemDetail_body {
+        padding-top: 36px;
+        .itemDetail_body_inner {
+            width: 1200px;
+            margin: 0 auto 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            .box_style {
+                font-size: 14px;
+                margin-bottom: 8px;
+                padding: 24px 32px 32px;
+                background: #FFF;
+                box-shadow: 0 8px 16px 0 rgba(7,17,27,.1);
+                border-radius: 12px;
+            }
+            .left {
+                width: 800px;
+            }
+            .right {
+                width: 300px;
+                .rewrite_h4 {
+                    border-radius: 15px;
+                    height: 48px;
+                    text-align: center;
+                    background: #F00D10;
+                    width: 100%;
+                    color: white;
+                    line-height: 48px;
+                }
+                .rewrite_h5 {
+                    margin-bottom: 6px;
+                    font-weight: 700;
+                    font-size: 14px;
+                }
+                .right_recommend {
+                    .right_recommend_item {
+                        display: flex;
+                        flex-direction: row;
+                        margin-bottom: 5px;
+                        .course_img {
+                            width: 80px;
+                            height: 60px;
+                            border-radius: 6px;
+                        }
+                        .p_style {
+                            margin-left: 8px;
+                            display: flex;
+                            flex-direction: column;
+                            .course_name {
+                                // padding-top: 3px;
+                                font-size: 13px;
+                            }
+                            .course_info {
+                                font-size: 12px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// 图片动态效果
+// .img_dynamic:hover {
+//     width: 90px!important;
+//     height: 70px!important;
+// }
+
+.img_style_author {
+    width: 48px;
+    height: 48px;
+    position: relative;
+    transform: opacity 1s ease-in;
+    overflow: hidden;
+}
+
+.img_style {
+    width: 80px;
+    height: 60px;
+    position: relative;
+    transform: opacity 1s ease-in;
+    overflow: hidden;
+}
+
+.img {
+    width: 100%;
+    height: 100%;
+}
+
+.img_style_end:hover {
+    transform: scale(1.05);
+}
