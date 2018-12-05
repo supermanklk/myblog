@@ -1,6 +1,7 @@
 import React from 'react';
 import './index.scss';
-import ItemMovieList from './itemMovieList/index'; // 课程章节 >> 具体的视频列表组件
+// import ItemMovieList from './itemMovieList/index'; // 课程章节 >> 具体的视频列表组件
+import ItemMovieList from '../../pages/home/containers/mood/learnHome/itemDetail/itemMovieList/index';
 import {Collapse, List, Avatar} from 'antd';
 const Panel = Collapse.Panel;
 /**
@@ -15,17 +16,10 @@ class itemDetail extends React.Component {
     constructor(...props) {
         super(...props);
         this.state = {
-            activeA : 1,    // 默认为课程章节
+            activeA : 3,    // 默认为课程章节
         }
     }
     
-    componentDidMount() {
-        // 根据courseId的参数来进行渲染这个页面
-        //console.log(this.props.query.courseId);
-        
-        console.log(this.props.location.query.courseId);
-    }
-
 
     /**
      * @description     点击课程,问答,笔记,评价触发的函数
@@ -40,7 +34,7 @@ class itemDetail extends React.Component {
             /* 此刻按钮颜色是num这个 */
             switch (num){
                 case 1 :
-                    this.a1.style.color = '#EE0D12';
+                    // this.a1.style.color = '#EE0D12';
                     break;
                 case 3 :
                     this.a3.style.color = '#EE0D12';
@@ -51,7 +45,7 @@ class itemDetail extends React.Component {
                 default :
                     break;
             } 
-            if(this.state.activeA == 1) this.a1.style.color = '';
+            // if(this.state.activeA == 1) this.a1.style.color = '';
             if(this.state.activeA == 3) this.a3.style.color = '';
             if(this.state.activeA == 4) this.a4.style.color = '';
         }
@@ -185,37 +179,15 @@ class itemDetail extends React.Component {
       
 		return (
             <div className = 'itemDetail'>
-                
-                {/* header */}
-                <div className = 'itemDetail_header'>
-                    {/* 1200px */}
-                    <div className = 'itemDetail_header_inner'>
-                        <div className = 'top'>
-                            <p>课程 \运维&测试 \测试 \基于LNMP的测试工具环境部署</p>
-                            <p>收藏/微博/腾讯/QQ</p>
-                        </div>
-                        <h3 className = 'body'>基于LNMP的测试工具环境部署</h3>
-                        <div className = 'bottom'>
-                            <div className = 'bottom_left'>
-                                <img className = 'img_author' src="http://supermanbin.oss-cn-beijing.aliyuncs.com/superman.png" alt=""/>
-                                <p className = 'bottom_left_right'>
-                                    <span>超人不会飞</span>
-                                    <span className = 'what'>前端攻城狮</span>
-                                </p>
-                            </div>
-                            <p className = 'bottom_right'>难度初级 时长 1小时56分 学习人数1025 综合评分10.0</p>
-                        </div>
-                    </div>
-                </div>
 
                 {/* header - 2 */}
                 <div className = 'itemDetail_header_2'>
                     {/* 1200px */}
                     <div className = 'itemDetail_header_2_inner'>
                         {/* 封装成公共组建 */}
-                        <span ref = {node => this.a1 = node} onClick = {() => {this.clickA(1)}} style = {{color : '#EE0D12'}}>课程章节</span>
+                        {/* <span ref = {node => this.a1 = node} onClick = {() => {this.clickA(1)}} style = {{color : '#EE0D12'}}>课程章节</span> */}
                         {/* <a onClick = {() => {this.clickA(2)}}>问答评价</a> */}
-                        <span href = "#" ref = {node => this.a3 = node} onClick = {() => {this.clickA(3)}}>同学笔记</span>
+                        <span href = "#" ref = {node => this.a3 = node} onClick = {() => {this.clickA(3)}} style = {{color : '#EE0D12'}}>同学笔记</span>
                         <span href = "#" ref = {node => this.a4 = node} onClick = {() => {this.clickA(4)}}>用户评价</span>
                     </div>
                 </div>
@@ -297,16 +269,5 @@ class itemDetail extends React.Component {
 	} 
 }
 
-
-
-
-// const mapStateToProps = (state) => ({
-// 	state: state.SmallToolsReducer
-// })
-// const mapDispatchToProps = (dispatch) => {
-// 	return bindActionCreators({},dispatch);
-// }
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Learn);
 
 export default itemDetail;
