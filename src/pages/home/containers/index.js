@@ -1,6 +1,4 @@
 import Home from './home/index'
 
 
-export {
-    Home,
-} 
+export default Home;

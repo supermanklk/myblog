@@ -1,0 +1,26 @@
+.music-swipercon {
+    width: 960px;
+    margin: 0 auto;
+
+    .music-swiper {
+        margin: 30px auto;
+        overflow: visible;
+    }
+
+    .music-swiper-pagination {
+        bottom: -20px;
+
+        .swiper-pagination-bullet {
+            width: 7px;
+            height: 7px;
+            margin: 0 6px;
+        }
+        
+        .swiper-pagination-bullet-active {
+            background: #dd5862;
+        }
+        
+    }
+
+}
+
