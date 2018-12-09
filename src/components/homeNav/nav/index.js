@@ -28,7 +28,7 @@ class Nav extends React.Component {
                     <Menu.Item><a href="#/music">音乐</a></Menu.Item> 
                     <Menu.Item><a href="#/mood">心情</a></Menu.Item> 
                     <SubMenu key="sub2" title={<span><Icon type="setting" /><span>待定四项</span></span>}>
-                        <Menu.Item key="7">你是猪大</Menu.Item>
+                        <Menu.Item><a href="#/slipGame">胡小喵写的</a></Menu.Item>
                         <Menu.Item key="8">你是猪二</Menu.Item>
                         <Menu.Item key="9">你是猪三</Menu.Item>
                         <Menu.Item key="10">你是猪四</Menu.Item> 

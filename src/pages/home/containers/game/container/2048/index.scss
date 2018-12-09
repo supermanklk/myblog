@@ -1,0 +1,11 @@
+.slipgame{
+    display: grid;
+    width: 500px;
+    height: 500px;
+    grid-template-columns: 125px 125px 125px 125px; 
+    .item1 {
+        grid-column-start: 1; 
+        grid-column-start: 1; 
+        background-color: red;
+    }
+}

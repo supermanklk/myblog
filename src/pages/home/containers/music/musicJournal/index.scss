@@ -1,0 +1,37 @@
+
+.journal{
+    width: 960px;
+    margin: 0 auto;
+
+    .journal-title {
+
+        .title-head {
+            float: left;
+            font-size: 24px;
+            line-height: 24px;
+
+            .title-label {
+                font-size: 16px;
+                border-left: 3px solid #dd5862;
+                margin-right: 10px;
+            }
+        }
+        
+        .title-sub {
+            float: right;
+
+            a{
+                color: #8C8C8C;
+                margin-left: 5px;
+            }
+            a:hover{
+                color: #dd5862;
+            }
+        }
+    
+    }
+}
+.clearfix:after {
+    content: '';
+    overflow: hidden;
+}
