@@ -8,10 +8,14 @@ import './index.scss';
 class MusicSwiper extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            musicSwiperBg: ''
+        }
     }
     
     componentDidMount() {
-        new Swiper(this.swiperEle, {
+        var self = this;
+        this.swiper = new Swiper(this.swiperEle, {
             effect : 'fade',
             autoplay: true,
             loop: true,
@@ -22,10 +26,69 @@ class MusicSwiper extends React.Component {
                 prevEl: this.buttonPrev,
                 nextEl: this.buttonNext
             },
+            on: {
+                // 背景颜色跟随轮播图变化
+                slideChangeTransitionStart: function() {
+                    switch(this.realIndex) {
+                        case 0:
+                            self.setState({
+                                musicSwiperBg: '#E46322'
+                            });
+                            break;
+                        case 1:
+                            self.setState({
+                                musicSwiperBg: '#000'
+                            });
+                            break;
+                        case 2:
+                            self.setState({
+                                musicSwiperBg: '#C3CDC5'
+                            });
+                            break;
+                        case 3:
+                            self.setState({
+                                musicSwiperBg: '#BBA262'
+                            });
+                            break;
+                        case 4:
+                            self.setState({
+                                musicSwiperBg: '#E35D23'
+                            });
+                            break;
+                        case 5:
+                            self.setState({
+                                musicSwiperBg: '#232172'
+                            });
+                            break;
+                        case 6:
+                            self.setState({
+                                musicSwiperBg: '#D3C1D7'
+                            });
+                            break;
+                        case 7:
+                            self.setState({
+                                musicSwiperBg: '#FFFCF7'
+                            });
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
         });
+
+        // 鼠标进入轮播停止、移出恢复事件
+        this.swiperEle.onmouseenter = () => {
+            this.swiper.autoplay.stop();
+        }
+        this.swiperEle.onmouseleave = () => {
+            this.swiper.autoplay.start();
+        }
     }
 
     render() {
+        const { musicSwiperBg } = this.state;
+
         // 轮播图数据
         const swiperList = [
             {
@@ -60,10 +123,10 @@ class MusicSwiper extends React.Component {
                 href: 'https://music.163.com/m/at/5c0a4b23af78cf57b183f735',
                 imgSrc: 'http://p1.music.126.net/zMxDpDzY1RE_R4N-TSn1lg==/109951163714480983.jpg'
             }
-        ]
+        ];
 
         return(
-            <div className="music-swiper">
+            <div className="music-swiper" style={{ background:musicSwiperBg }}>
                 <div className="music-swiper-con">
                     <div className="music-swiper-layout">
                         <div className="swiper-container" 
@@ -73,7 +136,7 @@ class MusicSwiper extends React.Component {
                             {
                                 swiperList.map((item, index) => {
                                     return(
-                                        <div className="swiper-slide">
+                                        <div className="swiper-slide" key={ index }>
                                             <a href={ item.href }>
                                                 <img src={ item.imgSrc } />
                                             </a>
@@ -97,13 +160,22 @@ class MusicSwiper extends React.Component {
                                 <div className="myinfo-msg">
                                     <p className="myinfo-nick">猫几酱</p>
                                     <span className="myinfo-level">LV.7</span>
-                                    <Button>签到</Button>
+                                    <Button type="primary" className="btn-sign">签到</Button>
                                 </div>
                             </div>
-                            <ul>
-                                <li>动态</li>
-                                <li>关注</li>
-                                <li>粉丝</li>
+                            <ul className="myinfo-ft">
+                                <li>
+                                    <span>0</span>
+                                    <p>动态</p>
+                                </li>
+                                <li>
+                                    <span>7</span>
+                                    <p>关注</p>
+                                </li>
+                                <li>
+                                    <span>7</span>
+                                    <p>粉丝</p>
+                                </li>
                             </ul>
                         </div>
                     </div>

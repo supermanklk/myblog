@@ -1,6 +1,6 @@
 import React from 'react';
 import MusicSwiper from './musicSwiper/index';
-import MusicJournal from './musicJournal/index';
+import MusicRecommend from './musicRecommend/index';
 
 import './index.scss';
 
@@ -13,7 +13,9 @@ class Music extends React.Component {
         return(
             <div>
                 <MusicSwiper />
-                <MusicJournal />
+                <div className="music-con">
+                    <MusicRecommend />
+                </div>
             </div>
         )
     }
