@@ -19,3 +19,5 @@ npm start
 ![界面图2](http://supermanbin.oss-cn-beijing.aliyuncs.com/%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1/showPicture/detail1_gp.png)
  
 
+
+

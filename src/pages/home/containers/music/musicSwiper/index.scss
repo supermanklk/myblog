@@ -1,0 +1,107 @@
+.music-swiper {
+    overflow: hidden;
+    width: 100%;
+    margin-top: 30px;
+    background-color: pink;
+
+    .music-swiper-con {
+        width: 1200px;
+        margin: 0 auto;
+        background-color: lightblue;
+    }
+    .music-swiper-layout {
+        display: flex;
+        position: relative;
+        width: 982px;
+
+        .swiper-container {
+            position: static;
+            width: 730px;
+
+            .swiper-pagination {
+                width: 730px;
+            }
+            .swiper-pagination-bullet {
+                width: 6px;
+                height: 6px;
+                margin: 0 7.5px;
+                background: #fff;
+                opacity: .8;
+            }
+            .swiper-pagination-bullet-active {
+                background: #C10D0C;
+            }
+            [class^='swiper-button'] {
+                display: flex;
+                align-items: center;
+                width: 37px;
+                height: 63px;
+                background: none;
+            }
+            .swiper-button-prev {
+                left: -68px;
+
+                .icon-left {
+                    color: #fff;
+                    font-size: 40px;
+                    font-weight: 300;
+                }
+            }
+            .swiper-button-next {
+                right: -68px;
+
+                .icon-right {
+                    color: #fff;
+                    font-size: 40px;
+                    font-weight: 300;
+                }
+            }
+        }
+        
+        .myinfo {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 254px;
+            height: 336px;
+            padding-left: 20px;
+            background-color: #FAFAFA;
+            box-shadow: 0px 0px 20px #999;
+            z-index: 1;
+            .myinfo-con {
+                display: flex;
+
+                img {
+                    padding: 2px;
+                    border: 1px solid #dadada;
+                }
+                .myinfo-msg {
+                    display: inline-block;
+                    margin-left: 17px;
+                    padding-top: 5px;
+    
+                    .myinfo-nick {
+                        font-size: 14px;
+                        font-weight: 700;
+                    }
+                    .myinfo-level {
+                        display: inline-block;
+                        height: 17px;
+                        padding: 0 10px;
+                        border: 1px solid #999;
+                        border-radius: 8.5px;
+                        color: #999;
+                        font-size: 12px;
+                        font-weight: 700;
+                        font-style: italic;
+                        line-height: 17px;
+                    }
+                }
+            }
+            
+            
+        }
+    }
+    
+}
+
