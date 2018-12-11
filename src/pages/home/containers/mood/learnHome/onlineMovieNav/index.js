@@ -21,7 +21,6 @@ class OnlineMovieNav  extends React.Component {
         const reightBtnStyle = {
             marginLeft : this.props.containerWidth - 650
         };
-        console.log('width',this.props.containerWidth,'height',this.props.containerHeight);
         return (
             <div id = "onlineMovieNav"> 
                 <Menu
