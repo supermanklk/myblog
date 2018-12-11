@@ -1,6 +1,8 @@
 import React from 'react';
 import {Icon, Drawer, Radio} from 'antd';
 import Course from '../../../../../../components/course/index';
+import Dimensions from 'react-dimensions';
+import OnlineMovieNav from '../onlineMovieNav/index';
 import './index.scss';
 
 const RadioGroup = Radio.Group;
@@ -52,7 +54,12 @@ class OnlineMovie extends React.Component {
 
     render() {
 		return ( 
-			<div className = "onlineMovie_wrap">	
+			<div className = "onlineMovie_wrap">
+				
+				{/* 播放视频导航 */}
+				<OnlineMovieNav/>
+
+				{/* 播放视频块 */}	
 				<div className = "onlineMovie">
 					
 					{/* 播放页-左边导航 */}
@@ -77,7 +84,22 @@ class OnlineMovie extends React.Component {
 							onClose		=	{this.onClose}
 							visible		=	{this.state.visible}
 							// style 		=	{{background : 'red'}}
+							height		=	{300}
 							>
+							<p>Some contents...</p>
+							<p>Some contents...</p>
+							<p>Some contents...</p>
+							<p>Some contents...</p>
+							<p>Some contents...</p>
+							<p>Some contents...</p>
+							<p>Some contents...</p>
+							<p>Some contents...</p>
+							<p>Some contents...</p>
+							<p>Some contents...</p>
+							<p>Some contents...</p>
+							<p>Some contents...</p>
+							<p>Some contents...</p>
+							<p>Some contents...</p>
 							<p>Some contents...</p>
 							<p>Some contents...</p>
 							<p>Some contents...</p>
@@ -115,4 +137,11 @@ class OnlineMovie extends React.Component {
 } 
 
 
-export default OnlineMovie;
+export default (Dimensions({
+	getHeight : function() {
+		return window.innerHeight;
+	},
+	geiWidth : function() {
+		return window.innerWidth;
+	}
+})(OnlineMovie));
