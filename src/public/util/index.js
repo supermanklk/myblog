@@ -6,7 +6,25 @@ var Tools = {
         }else{
             return true;
         } 
+    },
+
+    // fetch接口封装
+    api: function({ url, args='', callback }) {
+        let argsStr = '';
+        if(args!='') {
+            for(let key in args) {
+                argsStr += key + '=' + args[key] + '&';
+            }
+            argsStr = '?' + argsStr.substr(0, argsStr.length-1);
+        }
+        
+        fetch(url+argsStr)
+        .then(response => response.json())
+        .then(res => {
+            callback(res);
+        });
     }
 }
 
 export const isPhone = Tools.isPhone.bind(Tools);
+export const api = Tools.api.bind(Tools);

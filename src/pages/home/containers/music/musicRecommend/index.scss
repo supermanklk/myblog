@@ -1,0 +1,113 @@
+.music-recommend {
+    .hd {
+		height: 33px;
+		padding-right: 10px;
+		border-bottom: 2px solid #1590FF;
+
+		.icon-hd {
+			float: left;
+			width: 35px;
+			color: #1590FF;
+			font-size: 20px;
+			line-height: 33px;
+		}
+		.tit {
+			float: left;
+			font-size: 20px;
+			line-height: 28px;
+		}
+		.tab {
+			float: left;
+			margin: 7px 0 0 20px;
+			color: #666;
+			font-size: 12px;
+			
+			.line {
+				margin: 0 10px;
+				color: #ccc;
+			}
+		}
+		.more {
+			float: right;
+			margin-top: 9px;
+			color: #666;
+			font-size: 12px;
+
+			.icon-swap-right {
+				margin-left: 4px;
+				color: #1590FF;
+			}
+		}
+	}
+	.msk {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+	.msk {
+		background: url(https://s2.music.126.net/style/web2/img/coverall.png?9e76c71cb4ebedf4b0fa2c3576350bd8) no-repeat;
+	}
+	.bottom {
+		background: url(https://s2.music.126.net/style/web2/img/coverall.png?9e76c71cb4ebedf4b0fa2c3576350bd8) no-repeat;
+	}
+	.bd {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		padding-top: 20px;
+
+		.songlist {
+			width: 140px;
+			height: 204px;
+			margin-bottom: 30px;
+
+			.cover {
+				position: relative;
+				width: 140px;
+				height: 140px;
+
+				img {
+					width: 140px;
+					height: 140px;
+				}
+				a.msk {
+					background-position: 0 0;
+				}
+				.bottom {
+					position: absolute;
+					bottom: 0;
+					width: 100%;
+					height: 27px;
+					background-position: 0 -537px;
+					color: #ccc;
+					line-height: 27px;
+					padding: 0 10px;
+					
+					.num {
+						margin-left: 5px;
+						font-weight: 300;
+					}
+					.icon-play-circle {
+						float: right;
+						margin-top: 6px;
+						&:hover {
+							color: #fff;
+							cursor: pointer;
+						}
+					}
+				}
+			}
+			.desc {
+				margin: 8px 0 3px;
+				font-size: 14px;
+
+				a {
+					color: #000;
+				}
+			}
+		}
+	}
+	
+}

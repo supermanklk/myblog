@@ -11,10 +11,17 @@ class Music extends React.Component {
     
     render() {
         return(
-            <div>
+            <div className="music">
                 <MusicSwiper />
                 <div className="music-con">
-                    <MusicRecommend />
+                    <div className="music-div">
+                        <div className="music-left">
+                            <MusicRecommend />
+                        </div>
+                        <div className="music-right">
+                                222
+                        </div>
+                    </div>
                 </div>
             </div>
         )
