@@ -76,14 +76,6 @@ class MusicSwiper extends React.Component {
                 }
             }
         });
-
-        // 鼠标进入轮播停止、移出恢复事件
-        this.swiperEle.onmouseenter = () => {
-            this.swiper.autoplay.stop();
-        }
-        this.swiperEle.onmouseleave = () => {
-            this.swiper.autoplay.start();
-        }
     }
 
     render() {
@@ -131,6 +123,13 @@ class MusicSwiper extends React.Component {
                     <div className="music-swiper-layout">
                         <div className="swiper-container" 
                             ref={(node) => { this.swiperEle = node }}
+                            // 鼠标进入轮播停止、移出恢复事件
+                            onMouseEnter={() => {
+                                this.swiper.autoplay.stop(); 
+                            }}
+                            onMouseLeave={() => {
+                                this.swiper.autoplay.start(); 
+                            }}
                         >
                             <div className="swiper-wrapper">
                             {

@@ -1,7 +1,6 @@
 .music-swiper {
     overflow: hidden;
     width: 100%;
-    margin-top: 30px;
     transition: background 0.3s;
 
     .music-swiper-con {
@@ -29,7 +28,7 @@
                 opacity: .8;
             }
             .swiper-pagination-bullet-active {
-                background: #C10D0C;
+                background: #1590FF;
             }
             [class^='swiper-button'] {
                 display: flex;
