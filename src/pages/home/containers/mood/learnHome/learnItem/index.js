@@ -26,14 +26,25 @@ class LearnItem extends React.Component {
       const {data} = this.props;
       return ( 
         <div className="learnItem">
-                  <img onClick = {this.onclick} src="http://supermanbin.oss-cn-beijing.aliyuncs.com/demo_biye_learn.png" alt=""/>  
-                  <p onClick = {this.onclick}>Tornado从入门到进阶 打造支持高并发的技术论坛</p>
-                  <p>实战 中级 85</p>
-                  <Icon type="star" theme="outlined" />
-                  <Icon type="star" theme="outlined" />
-                  <Icon type="star" theme="outlined" />
-                  <Icon type="star" theme="outlined" />
-                  <Icon type="star" theme="outlined" />
+          <div>
+            <img onClick = {this.onclick} src="http://supermanbin.oss-cn-beijing.aliyuncs.com/demo_biye_learn.png" alt=""/>  
+            <p style = {{textAlign : 'left', paddingLeft : '10px', marginTop : '15px'}} onClick = {this.onclick}>Tornado从入门到进阶 打造支持高并发的技术论坛</p>
+          </div>
+
+          <div className = "learnItem_bottom">
+            <div>
+              <p>实战 中级 85</p>
+            </div>
+            <div>
+              <Icon type="star" theme="outlined" />
+              <Icon type="star" theme="outlined" />
+              <Icon type="star" theme="outlined" />
+              <Icon type="star" theme="outlined" />
+              <Icon type="star" theme="outlined" />
+            </div>
+          </div>
+          
+        
         </div>
       )
 	}

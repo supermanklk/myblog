@@ -18,6 +18,7 @@ class HorrorStyleImg extends React.Component {
 
     componentDidMount() { 
         console.log('加载了惊悚图片');
+        const ctx = this.refs.canvas;
     }
     componentWillReceiveProps(nextProps) { 
         console.log('惊悚接收新的props');
@@ -36,7 +37,11 @@ class HorrorStyleImg extends React.Component {
                         <Button onClick = {() => {this.props.horroToWestern('333')}}>点击跳转到欧美图下的欧美API1111</Button>
                     </TabPane>
 					<TabPane key={2} tab="惊悚文档">惊悚2222222222</TabPane> 
-					<TabPane key={3} tab="惊悚API">惊悚3333333333</TabPane>
+					<TabPane key={3} tab="惊悚API">
+                        <canvas ref = "canvas">
+
+                        </canvas>
+                    </TabPane>
 				</Tab> 
 			</div>
 		)

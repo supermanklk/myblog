@@ -8,6 +8,7 @@ import 'swiper/dist/css/swiper.min.css';
 import LearnItem from './learnItem/index';
 import LearnList from './learnList/index';
 import ItemDetail from './itemDetail/index';    //在线视频-课程详情
+import TitleH3 from 'components/titleH3/index';
 class LearnHome extends React.Component {
     
     componentDidMount() {
@@ -47,28 +48,28 @@ class LearnHome extends React.Component {
                         <div className='swiper-pagination'></div>
                     </div>
                 </div>
-                {/* 视频列表 */}
-                <h3>前／沿／技／术</h3>
-                <div className = 'mvItems'>
-                    <LearnList/>
-                    <LearnList/>
-                    <LearnList/>
-                </div>
-                <h3>技／能／提／升</h3>
-                <div className = 'mvItems'>
-                    <LearnList/>
-                    <LearnList/>
-                    <LearnList/>
-                </div>
-                <h3>精／彩／手／记／及／猿／问</h3>
 
+                {/* 视频列表 */}
+                
+                <TitleH3 title = "前言技术"/>
+                <div className = 'mvItems'>
+                    <LearnList/>
+                </div>
+
+                <TitleH3 title = "技能提升"/>
+                <div className = 'mvItems'>
+                    <LearnList/>
+                    <LearnList/>
+                    <LearnList/>
+                </div>
+
+                <TitleH3 title = "精彩手记及猿问"/>
+                <div className = 'mvItems'>
+                    <LearnList/>
+                    <LearnList/>
+                </div>
 
             </div>
-
-            // 课程详情页
-            // <div>
-            //     <ItemDetail/>
-            // </div>
 		) 
 	} 
 }

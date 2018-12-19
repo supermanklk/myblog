@@ -1,0 +1,46 @@
+.type-title {
+    margin-top: 20px;
+    margin-bottom: 12px;
+    position: relative;
+    font-size: 14px;
+    color: #93999F;
+    letter-spacing: 0.6px;
+    line-height: 36px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .em_style {
+        font-size: 20px;
+        font-weight: 600;
+        color: #4D555D;
+        margin: 0 3px;
+    }
+    .left {
+        display: inline-block;
+        vertical-align: bottom;
+        width: 56px;
+        height: 36px;
+        background: url('https://www.imooc.com/static/img/index/icon.png') no-repeat;
+        background-size: 100%;
+    }
+    
+    .middle {
+    
+    }
+    
+    .right {
+        margin-left: 5px;
+        display: inline-block;
+        vertical-align: bottom;
+        width: 56px;
+        height: 36px;
+        background: url('https://www.imooc.com/static/img/index/icon.png') no-repeat;
+        background-size: 100%;
+        background-position: center -36px;
+    }
+
+}
+
+
