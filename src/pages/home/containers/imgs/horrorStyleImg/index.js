@@ -2,7 +2,7 @@ import React from 'react';
 import './index.scss';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {Button} from 'qnui';
+import {Button, Select, Dialog} from 'qnui';
 import Tab from 'qnui/lib/tab';
 import {horroToWestern} from '../action';
 const TabPane = Tab.TabPane;
@@ -29,6 +29,14 @@ class HorrorStyleImg extends React.Component {
   
 	render() { 
         console.log('HorrorStyleImg惊悚',this.props);
+        const footer = (
+            <div className='dialog-footer-box'>
+                <div className='dialog-footer'>
+                    <Button type="primary" >确定</Button>
+                    <Button style={{marginLeft:"12px"}} type="normal">取消</Button>
+                </div>
+            </div>
+        );
 		return (
 			<div>
 				 <Tab size="small" type="text">
@@ -43,6 +51,39 @@ class HorrorStyleImg extends React.Component {
                         </canvas>
                     </TabPane>
 				</Tab> 
+
+                <Dialog
+                    className = "zhangbin"
+                    visible={true}
+                    footer={footer}
+                    shouldUpdatePosition={true}
+                    style={{width:'790px',height:'515px'}}
+                    // onClose={this.onClose}
+                    title={<span className='title'>物流信息</span>}>
+
+                    <Select size="large"
+                    style={{width:"244px"}}
+                    value="22222222222"
+                    // onChange={this.onChange.bind(this)}
+                    >
+                        <Select.Option value="option1">option1</Select.Option>
+                        <Select.Option value="option2">option2</Select.Option>
+                        <Select.Option value="option3">option2</Select.Option>
+                        <Select.Option value="option4">option2</Select.Option>
+                        <Select.Option value="option5">option2</Select.Option>
+                        <Select.Option value="option6">option2</Select.Option>
+                        <Select.Option value="option7">option2</Select.Option>
+                        <Select.Option value="option8">option2</Select.Option>
+                        <Select.Option value="option9">option2</Select.Option>
+                        <Select.Option value="option10">option2</Select.Option>
+                        <Select.Option value="option11">option2</Select.Option>
+                        <Select.Option value="option12">option2</Select.Option>
+                        <Select.Option value="option13">option2</Select.Option>
+                        <Select.Option value="option14">option2</Select.Option>
+                </Select>
+
+                </Dialog>
+               
 			</div>
 		)
 	}

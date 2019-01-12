@@ -1,7 +1,9 @@
 import React from 'react';
 import './index.scss';
-import{ Icon, Button } from 'antd';
+import{ Icon, Button, message } from 'antd';
 import {hashHistory} from 'react-router';
+import showRegisater from 'components/register/api';
+import {isEmpty} from 'util';
 // import {connect} from 'react-redux';
 // import {bindActionCreators} from 'redux';
 
@@ -15,12 +17,20 @@ import {hashHistory} from 'react-router';
  */
 class LearnItem extends React.Component {
     onclick = () => {
-      hashHistory.push({
-        pathname:'/itemDetail',
-        query:{
-          courseId : 1,
-        }
-      })
+      /* 点击视频需要用户登录,在这个位置设置登录权限 */
+      if(!isEmpty(sessionStorage.getItem('userLogin'))) {
+        hashHistory.push({
+          pathname:'/itemDetail',
+          query:{
+            courseId : 1,
+          }
+        })
+      } else {
+        /* 用户未登录 */
+        message.error('请先登录');
+        showRegisater();
+      }
+     
     }
     render() {
       const {data} = this.props;

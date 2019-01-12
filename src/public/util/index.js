@@ -23,8 +23,30 @@ var Tools = {
         .then(res => {
             callback(res);
         });
-    }
+    },
+
+    /* 判断是否为空 */
+    isEmpty: function(key){
+        if (typeof(key) === 'string') {
+            key = key.replace(/(^\s*)|(\s*$)/g, '');
+            if (key == '' || key == null || key == 'null' || key == undefined || key == 'undefined') {
+                return true
+            } else {
+                return false
+            }
+        } else if (typeof(key) === 'undefined') {
+            return true;
+        } else if (typeof(key) == 'object') {
+            for(let i in key){
+                return false;
+            }
+            return true;
+        }else if (typeof(key) == 'boolean'){
+            return false;
+        }
+    },
 }
 
 export const isPhone = Tools.isPhone.bind(Tools);
 export const api = Tools.api.bind(Tools);
+export const isEmpty = Tools.isEmpty.bind(Tools);

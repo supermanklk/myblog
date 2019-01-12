@@ -1,8 +1,8 @@
 import React from 'react';
 import './index.scss';
-import { Modal, Button, Tabs, Input, Icon, Checkbox } from 'antd';
+import { Modal, Button, Tabs, Input, Icon, Checkbox, message } from 'antd';
 // import {isPhone} from '../../public/util/index';
-import {isPhone} from 'util/index';
+import {isPhone, isEmpty} from 'util/index';
 // import Dimensions from 'react-dimensions';
 const TabPane = Tabs.TabPane;
 
@@ -141,6 +141,24 @@ class UserRegister extends React.Component {
         }
        
     }
+    
+
+    /**
+     * @description 用户登录
+     * @memberof UserRegister
+     */
+    login = () => {
+        // 账号,密码不为空
+        if(!isEmpty(this.state.password) && !isEmpty(this.state.id)) {
+            /* 目前接口还未完成,先写伪数据 */
+            sessionStorage.setItem('userLogin',this.state.id);
+            this.setState({
+                visible : false
+            })
+        } else {
+            message.error('请补全信息');
+        }
+    }
 
     
     /**
@@ -198,13 +216,13 @@ class UserRegister extends React.Component {
         return (
             <div>
                 <Modal
-                maskClosable = {false}
-                footer={null}
-                title=""
-                visible={this.state.visible}
-                onOk={this.handleOk}
-                onCancel={this.handleCancel}
-                width = {380}
+                maskClosable    = {true} // 点击蒙层是否消失
+                footer          = {null}
+                title           = ""
+                visible         = {this.state.visible}
+                onOk            = {this.handleOk}
+                onCancel        = {this.handleCancel}
+                width           = {380}
                 >
                     <Tabs defaultActiveKey="1" onChange={this.callback}>
                         
@@ -221,7 +239,7 @@ class UserRegister extends React.Component {
                                     <span>无法登录</span>
                                 </p>
                             </div>
-                            <h4 className = 'registerBtn'>登录</h4>
+                            <h4 className = 'registerBtn' onClick = {this.login}>登录</h4>
                         </TabPane>
 
                         {/* 注册的Tab */}
