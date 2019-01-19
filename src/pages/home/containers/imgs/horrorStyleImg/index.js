@@ -52,38 +52,6 @@ class HorrorStyleImg extends React.Component {
                     </TabPane>
 				</Tab> 
 
-                <Dialog
-                    className = "zhangbin"
-                    visible={true}
-                    footer={footer}
-                    shouldUpdatePosition={true}
-                    style={{width:'790px',height:'515px'}}
-                    // onClose={this.onClose}
-                    title={<span className='title'>物流信息</span>}>
-
-                    <Select size="large"
-                    style={{width:"244px"}}
-                    value="22222222222"
-                    // onChange={this.onChange.bind(this)}
-                    >
-                        <Select.Option value="option1">option1</Select.Option>
-                        <Select.Option value="option2">option2</Select.Option>
-                        <Select.Option value="option3">option2</Select.Option>
-                        <Select.Option value="option4">option2</Select.Option>
-                        <Select.Option value="option5">option2</Select.Option>
-                        <Select.Option value="option6">option2</Select.Option>
-                        <Select.Option value="option7">option2</Select.Option>
-                        <Select.Option value="option8">option2</Select.Option>
-                        <Select.Option value="option9">option2</Select.Option>
-                        <Select.Option value="option10">option2</Select.Option>
-                        <Select.Option value="option11">option2</Select.Option>
-                        <Select.Option value="option12">option2</Select.Option>
-                        <Select.Option value="option13">option2</Select.Option>
-                        <Select.Option value="option14">option2</Select.Option>
-                </Select>
-
-                </Dialog>
-               
 			</div>
 		)
 	}

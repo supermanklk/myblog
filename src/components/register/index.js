@@ -2,7 +2,7 @@ import React from 'react';
 import './index.scss';
 import { Modal, Button, Tabs, Input, Icon, Checkbox, message } from 'antd';
 // import {isPhone} from '../../public/util/index';
-import {isPhone, isEmpty} from 'util/index';
+import {isPhone, isEmpty, api} from 'util/index';
 // import Dimensions from 'react-dimensions';
 const TabPane = Tabs.TabPane;
 
@@ -160,6 +160,33 @@ class UserRegister extends React.Component {
         }
     }
 
+
+    /**
+     * @description 用户注册
+     * @memberof UserRegister
+     */
+    register = () => {
+        if(!isEmpty(this.state.registerPhone) && this.state.verificationCode === '8888') {
+            // 发送api注册
+            api({
+                // host    : 'http://localhost',
+                // method  : ':8080/GP_MOVIE/public/index.php/api/v1/graduationUser/register/179338437415/1898942289893',
+                // callback:(msg)=>{
+                //     console.log(msg);
+                // },
+                // errCallback:(error)=>{
+                //     console.log(error);
+                // }
+                url : 'http://localhost:8080/GP_MOVIE/public/index.php/api/v1/graduationUser/register/7983337415/89898339893',
+                callback : (msg) => {
+                    console.log(msg);
+                }
+            });
+        } else {
+            message.error('请补全注册信息');
+        }
+    }
+
     
     /**
      * @description     验证输入的信息 [1 id] [2 密码] 
@@ -251,7 +278,7 @@ class UserRegister extends React.Component {
                             <p className = 'prompt'>{this.state.verificationCode_placeholder}</p>
                             <Checkbox checked = {this.state.agreeProtocol} onChange = {(e) => {this.onChangeAgree(e,2)}}>同意</Checkbox>
                             <span>`南工在线学习系统`</span>
-                            <h4 className = 'registerBtn'>注册</h4>
+                            <h4 className = 'registerBtn' onClick = {this.register}>注册</h4>
                             <p className = 'share'>
                                 <span className = 'share_left'>其他方式登录:</span>
                                 <span className = 'share_right'>QQ 微信 微博</span>
