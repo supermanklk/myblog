@@ -27,7 +27,7 @@ class LearnItem extends React.Component {
         })
       } else {
         /* 用户未登录 */
-        message.error('请先登录');
+        // message.error('请先登录');
         showRegisater();
       }
      
