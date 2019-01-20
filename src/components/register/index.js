@@ -1,4 +1,5 @@
 import React from 'react';
+import Vcode from 'react-vcode';
 import './index.scss';
 import { Modal, Button, Tabs, Input, Icon, Checkbox, message } from 'antd';
 // import {isPhone} from '../../public/util/index';
@@ -29,7 +30,8 @@ class UserRegister extends React.Component {
             registerPhone_placeholder : '', //注册手机存在或者错误时候,显示报错内容
             verificationCode : '',          //验证码
             verificationCode_placeholder : '',      //验证码错误的时候显示报错内容
-            password_register : ''          //注册密码
+            password_register : '',         //注册密码
+            current_checkCode : ''          //当前验证码
         }
     }
 
@@ -171,8 +173,9 @@ class UserRegister extends React.Component {
      * @memberof UserRegister
      */
     register = () => {
-        let {registerPhone, password_register, verificationCode} = this.state;
-        if(!isEmpty(registerPhone) && verificationCode === '8888' && !isEmpty(password_register)) {
+        let {registerPhone, password_register, verificationCode, current_checkCode} = this.state;
+        if(!isEmpty(registerPhone) && verificationCode === current_checkCode && !isEmpty(password_register)) {
+            console.log('进来了');
             // 发送api注册
             let url = `http://localhost:8080/GP_MOVIE/public/index.php/api/v1/graduationUser/register/${registerPhone}/${password_register}`
             api({
@@ -221,7 +224,7 @@ class UserRegister extends React.Component {
                 break;
             // 注册输入验证码
             case 4 :
-                if(value == 77) {
+                if(value == this.state.current_checkCode) {
                     this.setState({verificationCode : value, verificationCode_placeholder : ''});
                 } else {
                     this.setState({verificationCode : value, verificationCode_placeholder : '验证码错误,请重试'})
@@ -245,6 +248,7 @@ class UserRegister extends React.Component {
     }
 
     render() {
+        console.log(this.state.current_checkCode);
         return (
             <div>
                 <Modal
@@ -281,7 +285,13 @@ class UserRegister extends React.Component {
                             <Input className = 'input_phone' type="password" value = {this.state.password_register}   onBlur = {(e) => {this.verification(e,5)}} onChange = {(e) => {this.change(e,5)}} placeholder = '请输入密码'/>
                             <p className = 'prompt'>{this.state.password_placeholder_register}</p>
                             <Input className = 'input_check' type="text" value = {this.state.verificationCode} onBlur = {(e) => {this.verification(e,4)}} onChange = {(e) => {this.change(e,4)}} placeholder = '请输入验证码'/>
-                            <p className = 'verificationCode'><Icon type="redo" /><span>KF98</span></p>
+                            {/* <p className = 'verificationCode'><Icon type="redo" /><span>KF98</span></p> */}
+                            <Vcode
+                            style = {{display : 'inline-block'}}
+                            length={4}
+                            onChange={(v) => this.setState({current_checkCode : v})}
+                            options={{ codes: [ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', '1', '2', '3', '8', '9', '4', '5', '6', '7'] }}
+                            />
                             <p className = 'prompt'>{this.state.verificationCode_placeholder}</p>
                             <Checkbox checked = {this.state.agreeProtocol} onChange = {(e) => {this.onChangeAgree(e,2)}}>同意</Checkbox>
                             <span>`南工在线学习系统`</span>
