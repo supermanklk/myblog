@@ -31,7 +31,8 @@ class UserRegister extends React.Component {
             verificationCode : '',          //验证码
             verificationCode_placeholder : '',      //验证码错误的时候显示报错内容
             password_register : '',         //注册密码
-            current_checkCode : ''          //当前验证码
+            current_checkCode : '',          //当前验证码
+            activeKey : '1', // tab的激活key
         }
     }
 
@@ -65,7 +66,7 @@ class UserRegister extends React.Component {
      * @param {*} key 1 与 2 的情况, 如果1到2,1的内容要初始化
      * @memberof UserRegister
      */
-    callback = (key) => {
+    changeTab = (key) => {
         console.log(key);
         if(key == 1) {
             // 恢复2的初始化
@@ -75,6 +76,7 @@ class UserRegister extends React.Component {
                 registerPhone_placeholder : '', //注册手机存在或者错误时候,显示报错内容
                 verificationCode : '',       //验证码
                 verificationCode_placeholder : '',      //验证码错误的时候显示报错内容
+                activeKey : '1',
             })
         } else if(key == 2) {
             // 恢复1的初始化
@@ -84,6 +86,7 @@ class UserRegister extends React.Component {
                 password : '',      //密码  必选
                 password_placeholder : '',      //密码错误的时候,显示的报错内容 
                 auto7 : false,     //默认7天自动登录为false 可选
+                activeKey : '2'
                
             })
         }
@@ -156,12 +159,24 @@ class UserRegister extends React.Component {
      */
     login = () => {
         // 账号,密码不为空
-        if(!isEmpty(this.state.password) && !isEmpty(this.state.id)) {
-            /* 目前接口还未完成,先写伪数据 */
-            sessionStorage.setItem('userLogin',this.state.id);
-            this.setState({
-                visible : false
-            })
+        let {password, id} = this.state;
+        if(!isEmpty(password) && !isEmpty(id)) {
+           let url = `http://localhost:8080/GP_MOVIE/public/index.php/api/v1/graduationUser/search/${id}`;
+            api({
+                url : url,
+                callback : (msg) => {
+                    console.log(msg);
+                    if(msg.code == '200') {
+                        /* 说明用户信息存在,需要将登录登录状态改变 */
+                         sessionStorage.setItem('userLogin',id);
+                         this.setState({
+                            visible : false
+                        })
+                    } else if (msg.code == '404') {
+                        /* 用户信息不存在 */
+                    }
+                }
+            });
         } else {
             message.error('请补全信息');
         }
@@ -182,7 +197,14 @@ class UserRegister extends React.Component {
                 url : url,
                 callback : (msg) => {
                     console.log(msg);
-                    // 如果注册成功以后,需要改变 [注册][登录] ==> [个人中心] [退出]
+                    if(msg.code == '403') {
+                        /* 在手机号下面展示该手机号已经被注册 */
+                        this.setState({registerPhone_placeholder : '该手机号已经被注册'});
+                    } else if (msg.code == '200') {
+                        /* 如果注册成功,切换到登录的tab */
+                        message.success('注册成功,请登录');
+                        this.changeTab(1);
+                    }
                 }
             });
         } else {
@@ -260,7 +282,7 @@ class UserRegister extends React.Component {
                 onCancel        = {this.handleCancel}
                 width           = {380}
                 >
-                    <Tabs defaultActiveKey="1" onChange={this.callback}>
+                    <Tabs defaultActiveKey="1" activeKey = {this.state.activeKey} onChange={this.changeTab}>
                         
                         {/* 登录的Tab */}
                         <TabPane tab="登录" key="1">
