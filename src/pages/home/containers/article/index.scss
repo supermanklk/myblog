@@ -1,3 +1,118 @@
 .article{
-    width: 50%;
+    width: 100%;
 }
+.home .center {
+     padding-right: none; 
+     padding-left: none; 
+}
+.App {
+    min-height: 100vh;
+  }
+  .ant-layout{
+    min-height: 100vh;
+  }
+  
+  .contentHeader{
+    background-color: #ffffff;
+    height: 10%;
+  }
+  .content{ 
+    background-color: #ffffff;
+  }
+  .sider{
+    background-color: #ffffff;
+  }
+  .siderContent{
+    width: 70%;
+    height: 90%;
+    position: relative;
+    top: 5%;
+    left: 15%;
+    background-color:#f9fafc;
+  }
+  .siderContent-top{
+    position: absolute;
+    width: 80%;
+    left: 10%;
+    top: 0;
+    height: 50%;
+    border-bottom: 2px solid #CDC1C5;
+    text-align: center;
+    padding-top: 20px;
+  }
+  .siderContent-bottom{
+    position: absolute;
+    width: 80%;
+    left: 10%;
+    top: 50%;
+    height: 50%;
+  
+  }
+  .menuList{
+    position: relative;
+    top: 7%;
+  }
+  .headerContent{
+    width: 85%;
+    height:60%;
+    position: relative;
+    top: 40%;
+    background-color:#fff3e3;
+  
+  }
+  .ant-layout-header{
+    padding: 0;
+  }
+  .MainContent{
+    height: 95%;
+    width: 85%;
+    position: relative;
+    top: 5%;
+  } 
+  .iconDiv{
+      width: 100%;
+      height: 200px;
+      position: relative
+  }
+  .iconDiv-item{
+    position: absolute;
+    height: 100%;
+    width: 30%;
+  }
+  .iconDiv-item1{
+      left: 0;
+  }
+  .iconDiv-item2{
+    left: 30%;
+  }
+  .iconDiv-item3{
+    left: 60%;
+  }
+  .div-icon{
+    position: relative;
+    top: 30%;
+    left: 20%;
+  }
+  .div-icon  div{
+    position: absolute;
+  }
+  .icon_list{
+    left: 45%;
+  }
+  .icon_list li{
+    list-style: none;
+    margin-bottom: 5px;
+  }
+  
+  .ant-list-item-action-split {
+    position: static; /*去掉两个按钮中间得横岗*/
+  }
+  .ant-card-head{
+    padding: 0;
+  }
+  .ant-card-head-title{
+    padding: 8px 0;
+  }
+  .siderContent-top{
+    border: none;
+  }

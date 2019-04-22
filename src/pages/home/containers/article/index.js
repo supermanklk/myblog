@@ -2,6 +2,10 @@ import React from 'react'
 import './index.scss'
 import {connect} from 'react-redux'
 import * as actions from './action' 
+import { Layout } from 'antd'
+import SiderContent from "./component/sider";
+import MainContent  from "./component/content";
+import MainHeader from "./component/header";
 // 这个有待学习
 // import Dimensions from 'react-dimensions'
 import img1 from '../../../../image/Snipaste_2018-09-16_15-04-31.png'
@@ -28,24 +32,32 @@ class Article extends React.Component {
     
  
     render() {
+        const {
+            Header, Sider, Content,
+          } = Layout;
         const suffix = this.props.state.name ? <Icon type="close-circle" onClick={this.emitEmpty} /> : null;
         return (  
             <div className="article"> 
-                {/* <Modal 
-                    title="英雄名" 
-                    visible={this.props.state.visible} 
-                    // onOk={this.props.openVisible}
-                    onCancel={this.props.closeVisible}
-                    onOk = {this.props.closeVisible}
-                    >  */}
-                {/* <Input
-                    placeholder="Enter your username"
-                    prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                    suffix={suffix} 
-                    value={this.props.state.name}
-                    onChange={this.props.onChangeUserName} 
-                /> */}
+    <Layout>
+            <Sider
+                className="sider"
+                width={"24%"}
+            >
+            <SiderContent />
+            </Sider>
+            <Layout className="contentLayout">
+              <Header className="contentHeader">
+                <MainHeader/>
+              </Header>
+              <Content className="content">
+              <MainContent/>
+              </Content>
+            </Layout>
+    </Layout>
                 
+
+
+
             </div>
         )
     }
