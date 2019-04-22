@@ -26,13 +26,13 @@ class Nav extends React.Component {
                     <Menu.Item key = "18"><a href="#/imgs">图片</a></Menu.Item> 
                     <Menu.Item key = "17"><a href="#/movies">电影</a></Menu.Item> 
                     <Menu.Item key = "16"><a href="#/music">音乐</a></Menu.Item> 
-                    <Menu.Item key = "15"><a href="#/mood">心情</a></Menu.Item> 
-                    <SubMenu key="sub2" title={<span><Icon type="setting" /><span>待定四项</span></span>}>
-                        <Menu.Item><a href="#/slipGame">胡小喵写的</a></Menu.Item>
+                    <Menu.Item key = "15"><a href="#/mood">在线学习</a></Menu.Item> 
+                    {/* <SubMenu key="sub2" title={<span><Icon type="setting" /><span>待定四项</span></span>}>
+                        <Menu.Item><a href="#/slipGame">sss</a></Menu.Item>
                         <Menu.Item key="8">你是猪二</Menu.Item>
                         <Menu.Item key="9">你是猪三</Menu.Item>
                         <Menu.Item key="10">你是猪四</Menu.Item> 
-                    </SubMenu>
+                    </SubMenu> */}
                     <Menu.Item id = "nav_register"><Button onClick = {this.register}>注册</Button></Menu.Item> 
                     <Menu.Item id = "nav_login"><Button onClick = {this.register}>登录</Button></Menu.Item>
                     <SubMenu id = "nav_userCenter" key="sub3" title={<span><Icon type="setting" /><span>个人中心</span></span>}>
