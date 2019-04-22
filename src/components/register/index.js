@@ -1,8 +1,9 @@
 import React from 'react';
+import Vcode from 'react-vcode';
 import './index.scss';
-import { Modal, Button, Tabs, Input, Icon, Checkbox } from 'antd';
+import { Modal, Button, Tabs, Input, Icon, Checkbox, message } from 'antd';
 // import {isPhone} from '../../public/util/index';
-import {isPhone} from 'util/index';
+import {isPhone, isEmpty, api} from 'util/index';
 // import Dimensions from 'react-dimensions';
 const TabPane = Tabs.TabPane;
 
@@ -29,6 +30,9 @@ class UserRegister extends React.Component {
             registerPhone_placeholder : '', //注册手机存在或者错误时候,显示报错内容
             verificationCode : '',          //验证码
             verificationCode_placeholder : '',      //验证码错误的时候显示报错内容
+            password_register : '',         //注册密码
+            current_checkCode : '',          //当前验证码
+            activeKey : '1', // tab的激活key
         }
     }
 
@@ -62,7 +66,7 @@ class UserRegister extends React.Component {
      * @param {*} key 1 与 2 的情况, 如果1到2,1的内容要初始化
      * @memberof UserRegister
      */
-    callback = (key) => {
+    changeTab = (key) => {
         console.log(key);
         if(key == 1) {
             // 恢复2的初始化
@@ -72,6 +76,7 @@ class UserRegister extends React.Component {
                 registerPhone_placeholder : '', //注册手机存在或者错误时候,显示报错内容
                 verificationCode : '',       //验证码
                 verificationCode_placeholder : '',      //验证码错误的时候显示报错内容
+                activeKey : '1',
             })
         } else if(key == 2) {
             // 恢复1的初始化
@@ -81,6 +86,7 @@ class UserRegister extends React.Component {
                 password : '',      //密码  必选
                 password_placeholder : '',      //密码错误的时候,显示的报错内容 
                 auto7 : false,     //默认7天自动登录为false 可选
+                activeKey : '2'
                
             })
         }
@@ -138,8 +144,72 @@ class UserRegister extends React.Component {
             this.setState({
                 verificationCode : e.target.value
             })
+        }else if (type == 5) {
+            this.setState({
+                password_register : e.target.value
+            })
         }
        
+    }
+    
+
+    /**
+     * @description 用户登录
+     * @memberof UserRegister
+     */
+    login = () => {
+        // 账号,密码不为空
+        let {password, id} = this.state;
+        if(!isEmpty(password) && !isEmpty(id)) {
+           let url = `http://localhost:8080/GP_MOVIE/public/index.php/api/v1/graduationUser/search/${id}`;
+            api({
+                url : url,
+                callback : (msg) => {
+                    console.log(msg);
+                    if(msg.code == '200') {
+                        /* 说明用户信息存在,需要将登录登录状态改变 */
+                         sessionStorage.setItem('userLogin',id);
+                         this.setState({
+                            visible : false
+                        })
+                    } else if (msg.code == '404') {
+                        /* 用户信息不存在 */
+                    }
+                }
+            });
+        } else {
+            message.error('请补全信息');
+        }
+    }
+
+
+    /**
+     * @description 用户注册
+     * @memberof UserRegister
+     */
+    register = () => {
+        let {registerPhone, password_register, verificationCode, current_checkCode} = this.state;
+        if(!isEmpty(registerPhone) && verificationCode === current_checkCode && !isEmpty(password_register)) {
+            console.log('进来了');
+            // 发送api注册
+            let url = `http://localhost:8080/GP_MOVIE/public/index.php/api/v1/graduationUser/register/${registerPhone}/${password_register}`
+            api({
+                url : url,
+                callback : (msg) => {
+                    console.log(msg);
+                    if(msg.code == '403') {
+                        /* 在手机号下面展示该手机号已经被注册 */
+                        this.setState({registerPhone_placeholder : '该手机号已经被注册'});
+                    } else if (msg.code == '200') {
+                        /* 如果注册成功,切换到登录的tab */
+                        message.success('注册成功,请登录');
+                        this.changeTab(1);
+                    }
+                }
+            });
+        } else {
+            message.error('请补全注册信息');
+        }
     }
 
     
@@ -176,7 +246,7 @@ class UserRegister extends React.Component {
                 break;
             // 注册输入验证码
             case 4 :
-                if(value == 77) {
+                if(value == this.state.current_checkCode) {
                     this.setState({verificationCode : value, verificationCode_placeholder : ''});
                 } else {
                     this.setState({verificationCode : value, verificationCode_placeholder : '验证码错误,请重试'})
@@ -184,6 +254,11 @@ class UserRegister extends React.Component {
                 break;
             // 登录是否选择七天自动登录
             case 5 :
+                if(('' + value).length < 6) {
+                    this.setState({password_placeholder_register : '请输入正确的密码'});
+                } else {
+                    this.setState({password_register : value, password_placeholder_register : ''});
+                }
                 break;
             // 注册是否选择同意
             case 6 :
@@ -195,18 +270,19 @@ class UserRegister extends React.Component {
     }
 
     render() {
+        console.log(this.state.current_checkCode);
         return (
             <div>
                 <Modal
-                maskClosable = {false}
-                footer={null}
-                title=""
-                visible={this.state.visible}
-                onOk={this.handleOk}
-                onCancel={this.handleCancel}
-                width = {380}
+                maskClosable    = {true} // 点击蒙层是否消失
+                footer          = {null}
+                title           = ""
+                visible         = {this.state.visible}
+                onOk            = {this.handleOk}
+                onCancel        = {this.handleCancel}
+                width           = {380}
                 >
-                    <Tabs defaultActiveKey="1" onChange={this.callback}>
+                    <Tabs defaultActiveKey="1" activeKey = {this.state.activeKey} onChange={this.changeTab}>
                         
                         {/* 登录的Tab */}
                         <TabPane tab="登录" key="1">
@@ -221,19 +297,27 @@ class UserRegister extends React.Component {
                                     <span>无法登录</span>
                                 </p>
                             </div>
-                            <h4 className = 'registerBtn'>登录</h4>
+                            <h4 className = 'registerBtn' onClick = {this.login}>登录</h4>
                         </TabPane>
 
                         {/* 注册的Tab */}
                         <TabPane tab="注册" key="2">
                             <Input className = 'input_phone' type="text" value = {this.state.registerPhone}  onBlur = {(e) => {this.verification(e,3)}} onChange = {(e) => {this.change(e,3)}} placeholder = '请输入注册手机号'/>
                             <p className = 'prompt'>{this.state.registerPhone_placeholder}</p>
+                            <Input className = 'input_phone' type="password" value = {this.state.password_register}   onBlur = {(e) => {this.verification(e,5)}} onChange = {(e) => {this.change(e,5)}} placeholder = '请输入密码'/>
+                            <p className = 'prompt'>{this.state.password_placeholder_register}</p>
                             <Input className = 'input_check' type="text" value = {this.state.verificationCode} onBlur = {(e) => {this.verification(e,4)}} onChange = {(e) => {this.change(e,4)}} placeholder = '请输入验证码'/>
-                            <p className = 'verificationCode'><Icon type="redo" /><span>KF98</span></p>
+                            {/* <p className = 'verificationCode'><Icon type="redo" /><span>KF98</span></p> */}
+                            <Vcode
+                            style = {{display : 'inline-block'}}
+                            length={4}
+                            onChange={(v) => this.setState({current_checkCode : v})}
+                            options={{ codes: [ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', '1', '2', '3', '8', '9', '4', '5', '6', '7'] }}
+                            />
                             <p className = 'prompt'>{this.state.verificationCode_placeholder}</p>
                             <Checkbox checked = {this.state.agreeProtocol} onChange = {(e) => {this.onChangeAgree(e,2)}}>同意</Checkbox>
                             <span>`南工在线学习系统`</span>
-                            <h4 className = 'registerBtn'>注册</h4>
+                            <h4 className = 'registerBtn' onClick = {this.register}>注册</h4>
                             <p className = 'share'>
                                 <span className = 'share_left'>其他方式登录:</span>
                                 <span className = 'share_right'>QQ 微信 微博</span>

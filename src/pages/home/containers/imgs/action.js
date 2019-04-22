@@ -1,3 +1,4 @@
+import {openVisible} from '../article/action';
 export const HORROR_TO_WESTERN = 'HORROR_TO_WESTERN';
 export const CHANGE_KEY = 'CHANGE_KEY';
 

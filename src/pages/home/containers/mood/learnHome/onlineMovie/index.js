@@ -76,8 +76,10 @@ class OnlineMovie extends React.Component {
 					</div>
 
 					{/* 播放页-播放区 */}
-					<div className = "center">
+					<div className = "center" >
 						<Drawer
+							// 修改antd的原生样式 
+							className = "coverAntdStyle"
 							title		=	"章节目录"
 							placement	=	{this.state.placement}
 							closable	=	{true}
