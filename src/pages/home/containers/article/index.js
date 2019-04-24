@@ -13,6 +13,13 @@ import { Modal, Button, Input, Icon } from 'antd'
 import { bindActionCreators } from 'redux';
 const confirm = Modal.confirm;
 class Article extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            isVisible : true, // 是否显示个人中心,如果用户没有登录的情况下就不能显示用户的信息
+        }
+    }
     
     /**
      * Author : Bin
@@ -26,6 +33,7 @@ class Article extends React.Component {
             // 发送action开启visible 
             // this.props.openVisible(); 
         }
+     
     }
 
 
@@ -37,7 +45,7 @@ class Article extends React.Component {
           } = Layout;
         const suffix = this.props.state.name ? <Icon type="close-circle" onClick={this.emitEmpty} /> : null;
         return (  
-            <div className="article"> 
+            <div className={this.state.isVisible == true ? 'article' : 'article displayNone'}> 
     <Layout>
             <Sider
                 className="sider"
@@ -55,9 +63,6 @@ class Article extends React.Component {
             </Layout>
     </Layout>
                 
-
-
-
             </div>
         )
     }

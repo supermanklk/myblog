@@ -12,14 +12,25 @@ import LearnItem from '../learnItem/index';
  */
 
 class LearnList extends React.Component { 
+
+	constructor(...props) {
+		super(...props);
+		this.state = {
+			list1 : null
+		}
+	}
+	
+
     render() {
-		return ( 
-			<div className="learnlist">
-				<LearnItem />
-				<LearnItem /> 
-				<LearnItem /> 
-			</div> 
-		)
+			let www1 = this.props.list1;
+			let www2 = this.props.list2;
+			return ( 
+				<div className="learnlist">
+					<LearnItem  data = {www1}/>
+					<LearnItem   data = {www2}/> 
+					<LearnItem /> 
+				</div> 
+			)
 	}
 } 
 

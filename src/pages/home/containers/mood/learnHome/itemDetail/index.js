@@ -2,6 +2,7 @@ import React from 'react';
 import './index.scss';
 import ItemMovieList from './itemMovieList/index'; // 课程章节 >> 具体的视频列表组件
 import {Collapse, List, Avatar} from 'antd';
+import { api } from 'util/index';
 const Panel = Collapse.Panel;
 /**
  * @description 在线学习视频-课程详情
@@ -16,14 +17,59 @@ class itemDetail extends React.Component {
         super(...props);
         this.state = {
             activeA : 1,    // 默认为课程章节
+            data : null,
+            nodeData : [],// 课程的笔记
+            evaluationData : [], // 课程评价的数据
         }
     }
     
     componentDidMount() {
         // 根据courseId的参数来进行渲染这个页面
         //console.log(this.props.query.courseId);
-        
         console.log(this.props.location.query.courseId);
+        api({
+            url: `http://localhost:8080/GP_MOVIE/public/index.php/api/v1/movie/${this.props.location.query.courseId}`,
+            callback: (rsp) => {
+                console.log('查看list1返回的数据',rsp);
+                this.setState({
+                    data : rsp
+                })
+            }
+        });
+
+        // 请求课程笔记
+        api({
+            url: `http://localhost:8080/GP_MOVIE/public/index.php/api/v1.GraduationNote/getInfobyId?courseID=${this.props.location.query.courseId}`,
+            callback: (rsp) => {
+                console.log('查看该课程的笔记',rsp);
+                this.setState({
+                    nodeData : rsp
+                })
+            }
+        });
+
+        // 请求课程的评价
+        api({
+            url: `http://localhost:8080/GP_MOVIE/public/index.php/api/v1.GraduationEvaluation/getInfobyId?courseID=${this.props.location.query.courseId}`,
+            callback: (rsp) => {
+                console.log('查看该课程的评价',rsp);
+                this.setState({
+                    evaluationData : rsp
+                })
+            }
+        });
+        
+    }
+
+
+    /**
+     * @description     点击学习去看视频,视频有免费的与收费的
+     * @author          Bin
+     * @date            2018-11-29
+     * @memberof        clickA
+     */
+    goToStudy(){
+        console.log('点击了开始学习');
     }
 
 
@@ -36,6 +82,7 @@ class itemDetail extends React.Component {
      */
 
     clickA(num) {
+        console.log(this.state);
         if(num != this.state.activeA) {
             /* 此刻按钮颜色是num这个 */
             switch (num){
@@ -61,7 +108,7 @@ class itemDetail extends React.Component {
     }
  
 	render() {
-
+        console.log('render');
         /* 用户评价内容 */
         const data = [
             {
@@ -99,6 +146,9 @@ class itemDetail extends React.Component {
             
         ];
 
+        const note = this.state.nodeData;
+        console.log('note',note);
+
         /* 同学笔记内容 */
         const text = `
         A dog is a type of domesticated animal.
@@ -113,66 +163,48 @@ class itemDetail extends React.Component {
             overflow: 'hidden',
         };
         /* 课程,问答,笔记,评价是否被显示, 同时只能显示一个 */
-        let displayLeft = null;
+        var displayLeft = null;
         switch (this.state.activeA) {
             case 1 : 
                 displayLeft = (
                     /* 课程章节 >> 具体的视频列表组件 */
                     <div className = 'left_div'>
-                        <ItemMovieList/>
+                        <ItemMovieList data = {this.state.data}/>
                     </div>
                 );
                 break;
             case 3 :
+                console.log(3);
                 displayLeft = (
-                    <Collapse bordered={false} defaultActiveKey={['1']}>
-                        <Panel header="超人 2018-8-9 男" key="1" style={customPanelStyle}>
-                        <p>大家记得拿快递哦~~不一一at了空调我新风我都关了，如果晚上冷自己开的话，记得关闭</p>
-                        </Panel>
-                        <Panel header="This is panel header 2" key="2" style={customPanelStyle}>
-                        <p>{text}</p>
-                        </Panel>
-                        <Panel header="This is panel header 3" key="3" style={customPanelStyle}>
-                        <p>{text}</p>
-                        </Panel>
-                        <Panel header="This is panel header 4" key="4" style={customPanelStyle}>
-                        <p>{text}</p>
-                        </Panel>
-                        <Panel header="This is panel header 5" key="5" style={customPanelStyle}>
-                        <p>{text}</p>
-                        </Panel>
-                        <Panel header="This is panel header 6" key="6" style={customPanelStyle}>
-                        <p>{text}</p>
-                        </Panel>
-                        <Panel header="This is panel header 7" key="7" style={customPanelStyle}>
-                        <p>{text}</p>
-                        </Panel>
-                        <Panel header="This is panel header 8" key="8" style={customPanelStyle}>
-                        <p>{text}</p>
-                        </Panel>
-                        <Panel header="This is panel header 9" key="9" style={customPanelStyle}>
-                        <p>{text}</p>
-                        </Panel>
-                        <Panel header="This is panel header 10" key="10" style={customPanelStyle}>
-                        <p>{text}</p>
-                        </Panel>
+                    <Collapse bordered={false} defaultActiveKey={['0']}>
+                        {
+                            note.map((item, index) => {
+                                return (
+                                    <Panel header={ item['time']} key={index} style={customPanelStyle}>
+                                        <p>{item['note']}</p>
+                                    </Panel>
+                                )
+                            })
+                        }
                     </Collapse> 
                 );
                 break;
             case 2 :
+            console.log(2);
                 displayLeft = '3333';
                 break;
             case 4 :
+            console.log(4);
                 displayLeft = (
                     <List
                     itemLayout="horizontal"
-                    dataSource={data}
+                    dataSource={this.state.evaluationData}
                     renderItem={item => (
                     <List.Item>
                         <List.Item.Meta
                         avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-                        title={<a href="#">{item.title}</a>}
-                        description = {item.description}
+                        title={<a href="#">{item.time}</a>}
+                        description = {item.evaluation}
                         />
                     </List.Item>
                     )}
@@ -180,6 +212,7 @@ class itemDetail extends React.Component {
                 );
                 break;
             default:
+            console.log(6);
                 return;
         }
       
@@ -241,7 +274,7 @@ class itemDetail extends React.Component {
                         <div className = 'right'>
                             {/* top */}
                             <div className = 'right_wrap box_style'>
-                                <h4 className = 'rewrite_h4'>开始学习</h4>
+                                <h4 onClick =  {this.goToStudy} className = 'rewrite_h4'>开始学习</h4>
                                 <h5 className = 'rewrite_h5'>课程须知</h5>
                                 <p>1、了解Linux的常用命令</p>
                                 <p>2、了解MySQL及PHP</p>

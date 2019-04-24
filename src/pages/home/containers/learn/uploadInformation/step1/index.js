@@ -27,8 +27,8 @@ class Step1 extends React.Component {
 	render() {
 		return (
             <div className = "step1">
-                 我是来:<Radio value={1}>投简历</Radio>
-                            <Radio value={2}>招人</Radio>
+                <Radio value={1}>投简历</Radio>
+                <Radio value={2}>招人</Radio>
                 <div className="inline_input">
                     <div> 
                         <RadioGroup onChange={this.onChange} value={this.state.value}>
@@ -44,14 +44,13 @@ class Step1 extends React.Component {
                     <div>
                         <RadioGroup onChange={this.onChange} value={this.state.value}>
                             <br/>
-                                <Input  addonBefore="姓名" className = "inline_input" placeholder="请输入你的名字"/>
-                                <Input  addonBefore="城市"className = "inline_input" placeholder="请输入你的城市"/>
+                                <Input  addonBefore="性别" className = "inline_input" placeholder="你的性别"/>
+                                <Input  addonBefore="职位"className = "inline_input" placeholder="你期望的职位"/>
                             <br/>
-                                <Input addonBefore="邮箱" className = "inline_input" placeholder="请输入你的email"/>
-                                <Input addonBefore="电话" className = "inline_input" placeholder="联系方式"/>
+                                <Input addonBefore="个人网站" className = "inline_input" placeholder="请输入你的网站"/>
+                                <Input addonBefore="毕业院校" className = "inline_input" placeholder="毕业院校"/>
                         </RadioGroup>
                     </div>
-                
                 </div>
             </div>
 			
@@ -60,6 +59,7 @@ class Step1 extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
+    state: state.uploadInformationReducer
 })
 const mapDispatchToProps = (dispatch) => {
 	return bindActionCreators(actions,dispatch);

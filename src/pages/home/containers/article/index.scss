@@ -2,8 +2,12 @@
     width: 100%;
 }
 .home .center {
-     padding-right: none; 
-     padding-left: none; 
+     padding-right: none!important; 
+     padding-left: none!important; 
+}
+
+.displayNone {
+  display: none;
 }
 .App {
     min-height: 100vh;

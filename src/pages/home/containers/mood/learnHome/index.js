@@ -9,8 +9,22 @@ import LearnItem from './learnItem/index';
 import LearnList from './learnList/index';
 import ItemDetail from './itemDetail/index';    //在线视频-课程详情
 import TitleH3 from 'components/titleH3/index';
+import { api } from 'util/index';
 class LearnHome extends React.Component {
     
+    constructor(props) {
+        super(props);
+        this.state = {
+            list1 : [], // 有三个课程
+            list2 : [],
+            list3 : [],
+            list4 : [],
+            list5 : [],
+            list6 : [],
+            list7 : [],
+        }
+    }
+
     componentDidMount() {
         var mySwiper = new Swiper('.swiper-container', {
             autoplay: true,
@@ -23,6 +37,28 @@ class LearnHome extends React.Component {
                 prevEl: '.swiper-button-prev',
             },
           });
+
+        //   先请求课程 目前先写死
+        let courseID = 111;
+        api({
+            url: `http://localhost:8080/GP_MOVIE/public/index.php/api/v1/movie`,
+            callback: (rsp) => {
+                console.log('查看list1返回的数据',rsp);
+                let list1 = [],list2 = [];
+                for(let i = 0; i < rsp.length; i++) {
+                    if(rsp[i]['courseID'] == '111') {
+                        list1.push(rsp[i]);
+                    } 
+                    if(rsp[i]['courseID'] == '222') {
+                        list2.push(rsp[i]);
+                    } 
+                }
+                this.setState({
+                    list1: list1,
+                    list2 : list2
+                });
+            }
+        });
     }
 
  
@@ -53,21 +89,21 @@ class LearnHome extends React.Component {
                 
                 <TitleH3 title = "前言技术"/>
                 <div className = 'mvItems'>
-                    <LearnList/>
+                    <LearnList list1 = {this.state.list1} list2 = {this.state.list2}/>
                 </div>
 
-                <TitleH3 title = "技能提升"/>
+                  <TitleH3 title = "技能提升"/>
+                  <div className = 'mvItems'>
+                      <LearnList/>
+                      <LearnList/>
+                      <LearnList/>
+                  </div>
+
+                  <TitleH3 title = "精彩手记及猿问"/>
                 <div className = 'mvItems'>
                     <LearnList/>
                     <LearnList/>
-                    <LearnList/>
-                </div>
-
-                <TitleH3 title = "精彩手记及猿问"/>
-                <div className = 'mvItems'>
-                    <LearnList/>
-                    <LearnList/>
-                </div>
+                 </div> 
 
             </div>
 		) 

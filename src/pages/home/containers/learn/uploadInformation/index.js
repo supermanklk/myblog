@@ -3,7 +3,7 @@ import './index.scss';
 import {connect} from 'react-redux';
 // import {bindActionCreators} from 'redux';
 import {Collapse, Steps, Button, message, Tabs, Icon } from 'antd';
-// import * as actions from './action'; 
+import * as actions from './action'; 
 import Step1 from './step1/index';
 import Step2 from './step2/index';
 import Step3 from './step3/index';
@@ -83,13 +83,13 @@ class UploadInformation extends React.Component {
 	}
 }
 
-// const mapStateToProps = (state) => ({
-// 	state: state.SmallToolsReducer
-// })
-// const mapDispatchToProps = (dispatch) => {
-// 	return bindActionCreators(actions,dispatch);
-// }
+const mapStateToProps = (state) => ({
+	state: state.uploadInformationReducer
+})
+const mapDispatchToProps = (dispatch) => {
+	return bindActionCreators(actions,dispatch);
+}
 
-// export default connect(mapStateToProps, mapDispatchToProps)(UploadInformation);
+export default connect(mapStateToProps, mapDispatchToProps)(UploadInformation);
 
-export default UploadInformation;
+// export default UploadInformation;

@@ -20,6 +20,7 @@ class Step3 extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
+	state: state.uploadInformationReducer
 })
 const mapDispatchToProps = (dispatch) => {
 	return bindActionCreators(actions,dispatch);

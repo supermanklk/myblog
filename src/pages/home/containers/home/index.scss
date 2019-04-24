@@ -4,11 +4,12 @@
     background-size: 100% 100%;
     background-repeat: no-repeat; 
     .center {  
-        padding-right: 100px;
-        padding-left: 100px; 
         padding-top: 70px;
         background: #FBF5E7;
         width: 1200px;
         margin:  0 auto 0;
+    }
+    .displayNone {
+        display: none;
     }
 }

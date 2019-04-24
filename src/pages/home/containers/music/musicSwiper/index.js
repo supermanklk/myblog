@@ -157,7 +157,7 @@ class MusicSwiper extends React.Component {
                             <div className="myinfo-con">
                                 <img src="http://p2.music.126.net/R8WsHUBXL6ozIsI0bRzing==/19178781323817662.jpg?param=80y80" />
                                 <div className="myinfo-msg">
-                                    <p className="myinfo-nick">猫几酱</p>
+                                    <p className="myinfo-nick">supermanbin</p>
                                     <span className="myinfo-level">LV.7</span>
                                     <Button type="primary" className="btn-sign">签到</Button>
                                 </div>
