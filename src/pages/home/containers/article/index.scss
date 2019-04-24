@@ -116,3 +116,21 @@
   .siderContent-top{
     border: none;
   }
+
+
+  // Btn组件
+  .ant-modal-title {
+    font-weight: 1000;
+  }
+  .ant-modal-header {
+     border-bottom:none; 
+  }
+  .ant-btn-primary {
+    background-color: #f5222d;
+    border-color: #f5222d;
+  }
+  .ant-modal-body {
+    padding-top: 10px;
+    padding-bottom: 40px;
+    padding-left: 85px;
+  }
