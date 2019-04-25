@@ -3,6 +3,7 @@ import './index.scss';
 import ItemMovieList from './itemMovieList/index'; // 课程章节 >> 具体的视频列表组件
 import {Collapse, List, Avatar} from 'antd';
 import { api } from 'util/index';
+import  Btn  from './postNote/index';
 const Panel = Collapse.Panel;
 /**
  * @description 在线学习视频-课程详情
@@ -275,6 +276,8 @@ class itemDetail extends React.Component {
                             {/* top */}
                             <div className = 'right_wrap box_style'>
                                 <h4 onClick =  {this.goToStudy} className = 'rewrite_h4'>开始学习</h4>
+                                {/* Btn 就是给课程留言/问题的按钮 */}
+                                <Btn courseId = {this.props.location.query.courseId}/>
                                 <h5 className = 'rewrite_h5'>课程须知</h5>
                                 <p>1、了解Linux的常用命令</p>
                                 <p>2、了解MySQL及PHP</p>

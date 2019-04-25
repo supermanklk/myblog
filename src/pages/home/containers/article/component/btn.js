@@ -54,7 +54,7 @@ export default class Btn extends Component {
 
             <Button onClick={this.showModal}>更改</Button>
 
-<div className="layer1">
+<div className="layer1 binbin">
 <Modal
           title="我要发布"
           visible={this.state.visible}
