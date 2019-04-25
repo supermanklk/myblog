@@ -37,7 +37,7 @@ class Home extends React.Component {
                     <Article/> 
                 </div>
                 <div className={this.state.active == '1' ? '' : 'displayNone' }>
-                    请登录呀
+                    <img className = 'img_author' src="https://supermanbin.oss-cn-beijing.aliyuncs.com/chouzhu.png" alt=""/>
                 </div>
             </div>
         )

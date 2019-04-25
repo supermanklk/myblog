@@ -1,9 +1,10 @@
 import React from 'react'
-import { Menu, Icon, Layout, Button } from 'antd'
+import { Menu, Icon, Layout, Button, Modal } from 'antd'
 import showRegisater from '../../register/api';
+import { hashHistory } from 'react-router'
 const { Header, Footer, Sider, Content } = Layout
 const SubMenu = Menu.SubMenu
-
+const confirm = Modal.confirm;
 // const MenuItemGroup = Menu.ItemGroup
 
 class Nav extends React.Component {
@@ -14,7 +15,24 @@ class Nav extends React.Component {
 
     userout = () => {
         // 用户退出
-        sessionStorage.clear();
+        confirm({
+            title: '确定退出?',
+            content: '退出以后,本地的信息将会被清除',
+            onOk() {
+                sessionStorage.clear();
+                hashHistory.push({
+                    pathname: '/mood',
+                });
+            },
+            onCancel() {},
+          });
+    }
+
+    componentDidMount() {
+        // 默认退出是不显示的
+        if(!sessionStorage.getItem('userLogin'))  {
+            document.getElementById('userout').style.display = 'none';
+        }
     }
 
     render() {
@@ -45,7 +63,7 @@ class Nav extends React.Component {
                         <Menu.Item key="12">supermanbin2</Menu.Item>
                         <Menu.Item key="13">supermanbin3</Menu.Item> 
                     </SubMenu> */}
-                    <Menu.Item id = "nav_lyout" key = "14"><Button onClick = {this.userout}>退出</Button></Menu.Item>
+                    <Menu.Item id = "nav_lyout" key = "14"><Button id="userout" onClick = {this.userout}>退出</Button></Menu.Item>
                 </Menu>
           </div>
         )

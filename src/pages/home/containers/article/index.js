@@ -46,26 +46,29 @@ class Article extends React.Component {
           } = Layout;
         const suffix = this.props.state.name ? <Icon type="close-circle" onClick={this.emitEmpty} /> : null;
         return (  
-            <div className={this.state.isVisible == true ? 'article' : 'article displayNone'}> 
-    <Layout>
-            <Sider
-                className="sider"
-                width={"24%"}
-            >
-            {/* <Btn/> */}
-            <SiderContent />
-            </Sider>
-            <Layout className="contentLayout">
-              <Header className="contentHeader">
-                <MainHeader/>
-              </Header>
-              <Content className="content">
-              <MainContent/>
-              </Content>
-            </Layout>
-    </Layout>
-                
+
+            <div>
+                <div className={this.state.isVisible == true ? 'article' : 'article displayNone'}> 
+                    <Layout>
+                            <Sider
+                                className="sider"
+                                width={"24%"}
+                            >
+                            {/* <Btn/> */}
+                            <SiderContent />
+                            </Sider>
+                            <Layout className="contentLayout">
+                            <Header className="contentHeader">
+                                <MainHeader/>
+                            </Header>
+                            <Content className="content">
+                            <MainContent/>
+                            </Content>
+                            </Layout>
+                    </Layout>
+                </div>
             </div>
+          
         )
     }
 } 
