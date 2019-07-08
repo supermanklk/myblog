@@ -195,7 +195,6 @@ class itemDetail extends React.Component {
                 displayLeft = '3333';
                 break;
             case 4 :
-            console.log(4);
                 displayLeft = (
                     <List
                     itemLayout="horizontal"

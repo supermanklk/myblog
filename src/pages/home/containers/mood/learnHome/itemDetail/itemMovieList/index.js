@@ -1,9 +1,10 @@
 import React from 'react';
 import { hashHistory } from 'react-router'
 import { api } from 'util/index';
-import { Modal, Button } from 'antd';
+import { Modal, Button, message } from 'antd';
 import './index.scss';
-
+import axios from 'axios';
+const confirm = Modal.confirm;
 /**
  * @description     该组件是课程章节下的具体视频列表,点击列表内的课程就会进入对应的视频播放页
  *                  该组件需要获取课程的id
@@ -26,6 +27,7 @@ class ItemMovieList extends React.Component {
             chapter_num3 : [],
             data : null,
             userInfo : null , // 用户的详细信息
+            course : '', // 那个课程
         }
     }
     
@@ -93,16 +95,54 @@ class ItemMovieList extends React.Component {
                                 });
                             } else {
                                 // 微信支付这一块已经做过
-                                Modal.warning({
-                                    title: '提示',
-                                    content: '你还没购买课程,请先购买课程',
+                              
+                                  confirm({
+                                    title: '购买课程?',
+                                    content: '你还没有购买课程,是否去购买?(取消是暴力购买)',
+                                    onOk() {
+                                        message.warning('目前没有资质认证支付,请联系管理员,bin');
+                                    },
+                                    onCancel() {
+                                        // 目前取消是暴力购买
+                                        axios.get(`http://bin.mynatapp.cc/GP_MOVIE/public/index.php/api/v1.Graduation_User/payCourse?phone=${sessionStorage.getItem("userLogin")}&course=${this.state.maindata['courseID']}`)
+                                        .then((res)=>{
+                                            console.log('查看购买情况',res);
+                                            // 并且购买成功进入
+                                            Modal.success({
+                                                title: '欢迎',
+                                                content: '感谢你对本课程的支持',
+                                            });
+                                        })
+                                        .catch((error)=>{
+                                            console.log(error);
+                                        })
+                                    },
                                   });
                             }
                         } catch (error) {
                              // 微信支付这一块已经做过
-                             Modal.warning({
-                                title: '提示',
-                                content: '你还没购买课程,请先购买课程',
+                             let _self = this;
+                             confirm({
+                                title: '购买课程?',
+                                content: '你还没有购买课程,是否去购买?',
+                                onOk() {
+                                    message.warning('目前没有资质认证支付,请联系管理员,bin');
+                                },
+                                onCancel() {
+                                     // 目前取消是暴力购买
+                                     axios.get(`http://bin.mynatapp.cc/GP_MOVIE/public/index.php/api/v1.Graduation_User/payCourse?phone=${sessionStorage.getItem("userLogin")}&course=${_self.state.maindata['courseID']}`)
+                                     .then((res)=>{
+                                         console.log('查看购买情况',res);
+                                         // 并且购买成功进入
+                                         Modal.success({
+                                             title: '欢迎',
+                                             content: '感谢你对本课程的支持',
+                                         });
+                                     })
+                                     .catch((error)=>{
+                                         console.log(error);
+                                     })
+                                },
                               });
                         }
                      

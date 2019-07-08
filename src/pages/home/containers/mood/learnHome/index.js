@@ -70,13 +70,13 @@ class LearnHome extends React.Component {
                     <div className="swiper-container">
                         <div className="swiper-wrapper">
                             <div className="swiper-slide">
-                                <img style = {{width : '100%',height : '400px'}} src="https://supermanbin.oss-cn-beijing.aliyuncs.com/biye_1.png" alt=""/>
+                                <img style = {{width : '100%',height : '400px'}} src="https://zhushangkeji.oss-cn-hangzhou.aliyuncs.com/img/biye_2.jpg" alt=""/>
                             </div>
                             <div className="swiper-slide">
-                                <img style = {{width : '100%',height : '400px'}} src="https://supermanbin.oss-cn-beijing.aliyuncs.com/biye_1.png" alt=""/>
+                                <img style = {{width : '100%',height : '400px'}} src="https://zhushangkeji.oss-cn-hangzhou.aliyuncs.com/img/biye_4.jpg" alt=""/>
                             </div>
                             <div className="swiper-slide">
-                                <img style = {{width : '100%', height : '400px'}} src="https://supermanbin.oss-cn-beijing.aliyuncs.com/biye_1.png" alt=""/>
+                                <img style = {{width : '100%', height : '400px'}} src="https://zhushangkeji.oss-cn-hangzhou.aliyuncs.com/img/biye_3.jpg" alt=""/>
                             </div>
                         </div>
                         {/* <div class="swiper-button-prev"></div> */}

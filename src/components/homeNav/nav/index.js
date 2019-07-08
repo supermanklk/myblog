@@ -19,6 +19,10 @@ class Nav extends React.Component {
             title: '确定退出?',
             content: '退出以后,本地的信息将会被清除',
             onOk() {
+                // 退出以后,要显示注册于登录
+                document.getElementById('userout').style.display = 'none';
+                document.getElementById('nav_register').style.display = '';
+                document.getElementById('nav_login').style.display = '';
                 sessionStorage.clear();
                 hashHistory.push({
                     pathname: '/mood',
@@ -42,8 +46,8 @@ class Nav extends React.Component {
                     mode = "horizontal" 
                     theme = "dark"  
                 >
-                    <Menu.Item key = "22">主页</Menu.Item>
-                    <Menu.Item key = "21"><a href="#/home">个人中心</a></Menu.Item>  
+                    <Menu.Item key = "22"><a href="#/main">主页</a></Menu.Item>
+                    <Menu.Item key = "21"><a href="#/home">用户信息</a></Menu.Item>  
                     <Menu.Item key = "20"> <a href="#/learn">求职/招聘</a> </Menu.Item> 
                     <Menu.Item key = "19"><a href="#/it">学习编程</a></Menu.Item>   
                     {/* <Menu.Item key = "18"><a href="#/imgs">图片</a></Menu.Item>  */}

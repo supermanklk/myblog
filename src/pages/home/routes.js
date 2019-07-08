@@ -6,6 +6,7 @@ import Imgs from './containers/imgs/index';
 import Movies from './containers/movies/index';
 import Music from './containers/music/index';
 import Mood from './containers/mood/index';
+import Main from './containers/main/index';
 import HomeNav from '../../components/homeNav/index';
 import itemDetail from '../../pages/home/containers/mood/learnHome/itemDetail/index';
 import SlipGame from './containers/game/container/2048/index';
@@ -20,6 +21,11 @@ const createRoutes = {
             path : 'home', 
             component : Home  
         }, 
+        {
+            // 主页, 主要是介绍
+            path : 'main',
+            component : Main
+        },
         {
             path : 'news',
             component : News 

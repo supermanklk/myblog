@@ -1,0 +1,109 @@
+.main_item {
+    background: #F8FAFD;
+    .main_item_search {
+        position: fixed;
+        z-index: 1000;
+        right: 100px;
+        top: 70px;
+    }
+}
+
+.searchModal {
+    .searchModal_item {
+        .ant-list-item-content {
+            position: relative;
+            line-height: 32px;
+        }
+        .ant-btn {
+            position: absolute;
+            top: 0;
+            right: 0px;
+        }
+    }
+}
+
+.div_960 {
+    width: 1200px;
+    margin: 0 auto;
+
+    .div_left_right {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        .div_img {
+            border-radius: 20px;
+            // width: 450px;
+            img {
+                border-radius: 20px;
+                width: 580px;
+                height: 140px;
+            }
+        }
+    }
+
+    .div_left_right_note {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        // align-items: center;
+        .div_left_right_note_left {
+            padding: 10px;
+            width: 380px;
+            display: flex;
+            flex-direction: column;
+        }
+        .div_left_right_note_center {
+            padding: 10px;
+            width: 380px;
+            display: flex;
+            flex-direction: column;
+        }
+        .div_left_right_note_right {
+            padding: 10px;
+            width: 380px;
+            display: flex;
+            flex-direction: column;
+        }
+        .div_left_right_note_div {
+            div {
+                    border-radius: 8px;
+                    margin-top: 20px;
+                    padding: 20px;
+                    box-shadow: 0 4px 8px 0 rgba(7, 17, 27, 0.05);
+                    background: #ffffff;
+                    display: flex;
+                    flex-direction: column;
+                    .p1 {
+                        font: 14px/1.5 "PingFang SC", "微软雅黑", "Microsoft YaHei", Helvetica, "Helvetica Neue", Tahoma, Arial, sans-serif;
+                        color: #1c1f21;
+                    }
+                    .p2 {
+                        font-size: 16px;
+                        color: #07111B;
+                        line-height: 24px;
+                        transition: all .3s;
+                    }
+                    .p3 {
+                        font-size: 12px;
+                        color: #4D555D;
+                        line-height: 24px;
+                        text-align: justify;
+                        word-break: break-all;
+                        font-weight: 400;
+                    }
+                    .p4 {
+                        font-size: 12px;
+                        color: #93999F;
+                        line-height: 24px;
+                        margin-top: 12px;
+                        font-weight: 400;
+                    }
+            }
+        }
+    }
+
+
+}

@@ -1,11 +1,11 @@
 import React from 'react';
-import {Icon, Drawer, Radio} from 'antd';
+import {Icon, Drawer, Radio, Modal, Input, Button, Tooltip, Tag, message} from 'antd';
 import Course from '../../../../../../components/course/index';
 import Dimensions from 'react-dimensions';
 import { api } from 'util/index';
 import OnlineMovieNav from '../onlineMovieNav/index';
 import './index.scss';
-
+const confirm = Modal.confirm;
 const RadioGroup = Radio.Group;
 
 /**
@@ -21,11 +21,46 @@ class OnlineMovie extends React.Component {
 		super(...props);
 		this.state = {
 			visible: false, 
+			visible1 : false,
 			placement: 'bottom',
 			movieData : {
 				movie_address : ''
-			}
+			},
+			number : '', // 那个习题的下标
+			
 		}
+		this.content = '1+1等于几?',
+		this.answer = '';
+		this.randomContent = [
+			{
+				quest : '调用 setState 之后发生了什么?',
+				answer : '在代码中调用 setState 函数之后，React 会将传入的参数对象与组件当前的状态合并，然后触发所谓的调和过程（Reconciliation）。经过调和过程，React 会以相对高效的方式根据新的状态构建 React 元素树并且着手重新渲染整个 UI 界面。在 React 得到元素树之后，React 会自动计算出新的树与老树的节点差异，然后根据差异对界面进行最小化重渲染。在差异计算算法中，React 能够相对精确地知道哪些位置发生了改变以及应该如何改变，这就保证了按需更新，而不是全部重新渲染。'
+			},
+			{
+				quest : 'react 生命周期函数',
+				answer : '初始化阶段,运行中状态,销毁阶段'
+			},
+			{
+				quest : 'shouldComponentUpdate是做什么的,（react 性能优化是哪个周期函数？',
+				answer : 'shouldComponentUpdate 这个方法用来判断是否需要调用 render 方法重新描绘 dom。因为 dom 的描绘非常消耗性能，如果我们能在 shouldComponentUpdate 方法中能够写出更优化的 dom diff 算法，可以极大的提高性能。'
+			},
+			{
+				quest : '为什么虚拟 dom 会提高性能?(必考)',
+				answer : '虚拟 dom 相当于在 js 和真实 dom 中间加了一个缓存，利用 dom diff 算法避免了没有必要的 dom 操作，从而提高性能。'
+			},
+			{
+				quest : 'react diff 原理',
+				answer : '把树形结构按照层级分解，只比较同级元素。'
+			},
+			{
+				quest : '何为高阶组件(higher order component)',
+				answer : '高阶组件是一个以组件为参数并返回一个新组件的函数。HOC 运行你重用代码、逻辑和引导抽象。最常见的可能是 Redux 的 connect 函数。除了简单分享工具库和简单的组合，HOC 最好的方式是共享 React 组件之间的行为。如果你发现你在不同的地方写了大量代码来做同一件事时，就应该考虑将代码重构为可重用的 HOC。'
+			},
+			{
+				quest : '应该在 React 组件的何处发起 Ajax 请求',
+				answer : '在 React 组件中，应该在 componentDidMount 中发起网络请求。这个方法会在组件第一次“挂载”(被添加到 DOM)时执行，在组件的生命周期中仅会执行一次。更重要的是，你不能保证在组件挂载之前 Ajax 请求已经完成，如果是这样，也就意味着你将尝试在一个未挂载的组件上调用 setState，这将不起作用。在 componentDidMount 中发起网络请求将保证这有一个组件可以更新了。'
+			}
+		]
 	} 
 
 	
@@ -51,6 +86,152 @@ class OnlineMovie extends React.Component {
 				})
 			}
 		});
+
+
+
+		// 监听播放事件
+		this.setIntervalTime();
+
+	}
+
+	// 收藏习题
+	collectionExercises = ()=> {
+		// 发送请求去存储
+		// 获取习题
+		let { number } = this.state;
+		let quest = this.randomContent[number]['quest'];
+		let answer = this.randomContent[number]['answer'];
+		let json = {
+			quest,
+			answer
+		};
+		
+		let phone = sessionStorage.getItem('userLogin');
+		api({
+			url: `http://bin.mynatapp.cc/GP_MOVIE/public/index.php/api/v1.Graduation_User/getUser?phone=${phone}`,
+			callback: (rsp) => {
+				// let arr = [];
+				// arr.push(json);
+				// let data = JSON.stringify(arr);
+				// console.log(data);
+				// console.log(909090);
+				let data;
+				let binbin = rsp.data[0]['collection_exercises'];
+				console.log(binbin);
+				console.log(87878);
+				let arr = [];
+				if(!binbin) {
+					arr.push(json);
+					data = arr;
+				} else {
+					let collection_exercises = JSON.parse(binbin);
+					collection_exercises.push(json);
+					data = collection_exercises;
+				}
+				api({
+					url: `http://bin.mynatapp.cc/GP_MOVIE/public/index.php/api/v1.Graduation_User/collectionExercises?phone=${phone}&collection_exercises=${JSON.stringify(data)}`,
+					callback: (rsp) => {
+						console.log(rsp);
+					}
+				});
+			}
+		});
+		message.success('习题收藏成功');
+		var oMedia=document.getElementById("video-box-mocoplayer-hls-video_html5_api");
+		oMedia.play();
+		this.setIntervalTime();
+	}
+
+
+	setIntervalTime = () => {
+		let number = Math.floor(Math.random()*3);
+		this.setState({ number });
+		let self = this;
+		var oMedia=document.getElementById("video-box-mocoplayer-hls-video_html5_api");
+		let timer = setInterval(() => {
+			console.log(oMedia.currentTime);
+			let time = oMedia.currentTime;
+			// 一个视频弹2个习题
+			// 第一个时间在5秒的地方
+			if(time > 4 && time < 5) {
+				oMedia.pause();
+				clearInterval(timer);
+				confirm({
+					title: '习题',
+					cancelText: '收藏习题',
+					width : '500',
+					content:  (
+						<div>
+							<Tag color="#108ee9">{this.randomContent[number]['quest']}</Tag>
+							<Tooltip title={this.randomContent[number]['answer']}>
+								<span>触及查看答案</span>
+							</Tooltip>
+						</div>
+					),
+					onOk() {
+						oMedia.play();
+						self.setIntervalTime();
+						console.log('OK');
+					},
+					onCancel() {
+						// 发送请求,在用户下面存储该习题信息.
+						self.collectionExercises();
+					},
+				});
+			}
+			if(time > 10 && time < 11) {
+				oMedia.pause();
+				clearInterval(timer);
+				confirm({
+					title: '习题',
+					cancelText: '收藏习题',
+					content: (
+						<div>
+							{/* <Input placeholder="Basic usage"/>						 */}
+							<Tag color="#108ee9">{this.randomContent[number]['quest']}</Tag>
+							<Tooltip title={this.randomContent[number]['answer']}>
+								<span>触及查看答案</span>
+							</Tooltip>
+						</div>
+					),
+					onOk() {
+						oMedia.play();
+						self.setIntervalTime();
+						console.log('OK');
+					},
+					onCancel() {
+							// 发送请求,在用户下面存储该习题信息.
+							self.collectionExercises();
+						console.log('Cancel');
+					},
+				});
+			}
+			if(time > 15 && time < 16) {
+				oMedia.pause();
+				clearInterval(timer);
+				confirm({
+					title: '习题',
+					cancelText: '收藏习题',
+					content:  (
+						<div>
+							<Tag color="#108ee9">{this.randomContent[number]['quest']}</Tag>
+							<Tooltip title={this.randomContent[number]['answer']}>
+								<span>触及查看答案</span>
+							</Tooltip>
+						</div>
+					),
+					onOk() {
+						oMedia.play();
+						self.setIntervalTime();
+						console.log('OK');
+					},
+					onCancel() {
+							// 发送请求,在用户下面存储该习题信息.
+							self.collectionExercises();
+					},
+				});
+			}
+		},1000);
 	}
 
 	showDrawer = () => {
@@ -71,16 +252,49 @@ class OnlineMovie extends React.Component {
 		});
 	}
 
+	showModal = () => {
+    this.setState({
+      visible1: true,
+    });
+  }
+
+  handleOk = (e) => {
+    console.log(e);
+    this.setState({
+      visible1: false,
+		});
+		window.history.go(-1);
+		
+  }
+
+  handleCancel = (e) => {
+    console.log(e);
+    this.setState({
+      visible1: false,
+    });
+  }
+
 	goleft = () => {
 		// 返回上一层 因为上一层有问答 评论
-		window.history.go(-1);
+		this.setState({
+      visible1: true,
+    });
+		// window.history.go(-1);
 	}
 
 
     render() {
 		return ( 
 			<div className = "onlineMovie_wrap">
-				
+				<Modal
+					title="温馨提示"
+					visible={this.state.visible1}
+					onOk={this.handleOk}
+					onCancel={this.handleCancel}
+					width = "500"
+				>
+					<p>将要离开视频?</p>
+				</Modal>
 				{/* 播放视频导航 */}
 				<OnlineMovieNav title = {this.state.movieData}/>
 
@@ -131,7 +345,7 @@ class OnlineMovie extends React.Component {
 							<p>4-1 服务器端渲染中的路由</p>
 							<p>4-2 多页面路由跳转</p>
 						</Drawer>
-						<video style = {{width : '100%'}} id="video-box-mocoplayer-hls-video_html5_api"  controls preload="auto"  src={this.state.movieData['movie_address']}> </video>
+						<video  style = {{width : '100%'}} id="video-box-mocoplayer-hls-video_html5_api"  controls preload="auto"  src={this.state.movieData['movie_address']}> </video>
 					</div>
 
 					{/* 播放页-介绍 */}

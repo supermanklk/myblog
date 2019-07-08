@@ -169,11 +169,19 @@ class UserRegister extends React.Component {
                     if(msg.code == '200') {
                         /* 说明用户信息存在,需要将登录登录状态改变 */
                          sessionStorage.setItem('userLogin',id);
+                         sessionStorage.setItem('userinfo',JSON.stringify(msg.data[0]));
                          this.setState({
                             visible : false
                         })
+                        // 如果登录成功 则将退出显示出来
+                        // 显示个人中心
+                        document.getElementById('userout').style.display = '';
+                        document.getElementById('nav_register').style.display = 'none';
+                        document.getElementById('nav_login').style.display = 'none';
+                        
                     } else if (msg.code == '404') {
                         /* 用户信息不存在 */
+                        message.error('该用户还没注册,请先注册');
                     }
                 }
             });
